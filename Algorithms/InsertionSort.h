@@ -11,7 +11,8 @@
 
 #include "Defines.h"
 
-// TODO: Running time, space, etc.
+// Time: Ø(n^2) - worst/average, Ø(n) - best
+// Space: Ø(1)
 void insertionSort(Array & arr)
 {
 	for (int i = 1; i < arr.size(); i++)
