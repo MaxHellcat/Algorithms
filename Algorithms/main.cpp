@@ -7,16 +7,19 @@
 //
 
 #include "InsertionSort.h"
+#include "SelectionSort.h"
+
 #include "Defines.h"
 
 int main(int argc, const char * argv[])
 {
 //	Array arr = {5, 4, 6, 3, 1, 2};
-	Array arr(100, true);
+	Array arr(10, true);
 
 	arr.print();
 
-	insertionSort(arr);
+//	insertionSort(arr);
+	selectionSort(arr);
 
 	arr.print();
 
