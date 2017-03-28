@@ -8,6 +8,7 @@
 
 #include "InsertionSort.h"
 #include "SelectionSort.h"
+#include "BubbleSort.h"
 
 #include "Defines.h"
 
@@ -19,10 +20,10 @@ int main(int argc, const char * argv[])
 	arr.print();
 
 //	insertionSort(arr);
-	selectionSort(arr);
+//	selectionSort(arr);
+	bubbleSort(arr);
 
 	arr.print();
 
-	
 	return 0;
 }
