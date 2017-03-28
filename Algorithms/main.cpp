@@ -6,10 +6,20 @@
 //  Copyright © 2017 Max Reshetey. All rights reserved.
 //
 
-#include <iostream>
+#include "InsertionSort.h"
+#include "Defines.h"
 
-int main(int argc, const char * argv[]) {
-	// insert code here...
-	std::cout << "Hello, World!\n";
+int main(int argc, const char * argv[])
+{
+//	Array arr = {5, 4, 6, 3, 1, 2};
+	Array arr(100, true);
+
+	arr.print();
+
+	insertionSort(arr);
+
+	arr.print();
+
+	
 	return 0;
 }

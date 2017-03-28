@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		AEF12C2C1E8A82DD0078525D /* Algorithms */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithms; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF12C2F1E8A82DD0078525D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AEF12C361E8A85B20078525D /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		AEF12C371E8A9B1E0078525D /* InsertionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsertionSort.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +59,9 @@
 		AEF12C2E1E8A82DD0078525D /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				AEF12C371E8A9B1E0078525D /* InsertionSort.h */,
 				AEF12C2F1E8A82DD0078525D /* main.cpp */,
+				AEF12C361E8A85B20078525D /* Defines.h */,
 			);
 			path = Algorithms;
 			sourceTree = "<group>";
@@ -218,6 +222,7 @@
 		AEF12C341E8A82DD0078525D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -225,6 +230,7 @@
 		AEF12C351E8A82DD0078525D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				LINK_WITH_STANDARD_LIBRARIES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
