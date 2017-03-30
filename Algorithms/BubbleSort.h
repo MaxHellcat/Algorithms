@@ -11,6 +11,8 @@
 
 #include "Defines.h"
 
+// Time: Ø(n^2) - worst/average/best (Note, best can be Ø(n) with slight modification)
+// Space: Ø(1)
 void bubbleSort(Array & arr)
 {
 	for (int i = 0; i < arr.size() - 1; i++)
@@ -23,6 +25,8 @@ void bubbleSort(Array & arr)
 				arr[j] = arr[j - 1];
 				arr[j - 1] = tmpVal;
 			}
+
+			// TODO: Explain why this also works
 
 			// First I wrote this way and it also works!
 //			if (arr[j] < arr[i])
