@@ -6,10 +6,7 @@
 //  Copyright © 2017 Max Reshetey. All rights reserved.
 //
 
-#include "InsertionSort.h"
-#include "SelectionSort.h"
-#include "BubbleSort.h"
-#include "MergeSort.h"
+#include "Sorting.h"
 
 #include "Defines.h"
 

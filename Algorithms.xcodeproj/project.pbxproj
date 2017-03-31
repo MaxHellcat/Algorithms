@@ -26,6 +26,7 @@
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
 		AE9D58821E8B241E009BC63C /* BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
 		AEBD495E1E8E947A0041BC3B /* MergeSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MergeSort.h; sourceTree = "<group>"; };
+		AEBD495F1E8ED1480041BC3B /* Sorting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sorting.h; sourceTree = "<group>"; };
 		AEF12C2C1E8A82DD0078525D /* Algorithms */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithms; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF12C2F1E8A82DD0078525D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AEF12C361E8A85B20078525D /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		AEF12C2E1E8A82DD0078525D /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				AEBD495F1E8ED1480041BC3B /* Sorting.h */,
 				AEF12C371E8A9B1E0078525D /* InsertionSort.h */,
 				AE9D58811E8B06BC009BC63C /* SelectionSort.h */,
 				AE9D58821E8B241E009BC63C /* BubbleSort.h */,
