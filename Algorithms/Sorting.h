@@ -13,5 +13,6 @@
 #include "SelectionSort.h"
 #include "BubbleSort.h"
 #include "MergeSort.h"
+#include "HeapSort.h"
 
 #endif /* Sorting_h */
