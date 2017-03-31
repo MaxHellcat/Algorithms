@@ -11,6 +11,23 @@
 
 #include "Defines.h"
 
+void merge(Array & arr, int leftIndex, int midIndex, int rightIndex);
+
+// Time: Ø(n•lgn) - worst/average/best
+// Space: Ø(n)
+void mergeSort(Array & arr, int leftIndex, int rightIndex)
+{
+	if (leftIndex < rightIndex)
+	{
+		const int midIndex = (leftIndex + rightIndex) / 2;
+		
+		mergeSort(arr, leftIndex, midIndex);
+		mergeSort(arr, midIndex + 1, rightIndex);
+		
+		merge(arr, leftIndex, midIndex, rightIndex);
+	}
+}
+
 void merge(Array & arr, int leftIndex, int midIndex, int rightIndex)
 {
 	const int kLeftArraySize = midIndex - leftIndex + 1;
@@ -67,19 +84,6 @@ void merge(Array & arr, int leftIndex, int midIndex, int rightIndex)
 
 			break;
 		}
-	}
-}
-
-void mergeSort(Array & arr, int leftIndex, int rightIndex)
-{
-	if (leftIndex < rightIndex)
-	{
-		const int midIndex = (leftIndex + rightIndex) / 2;
-
-		mergeSort(arr, leftIndex, midIndex);
-		mergeSort(arr, midIndex + 1, rightIndex);
-
-		merge(arr, leftIndex, midIndex, rightIndex);
 	}
 }
 
