@@ -21,15 +21,16 @@ int main(int argc, const char * argv[])
 //	selectionSort(arr);
 //	bubbleSort(arr);
 //	mergeSort(arr, 0, (int)arr.size() - 1);
-	
+
 //	arr.print();
 
-	MaxHeap maxHeap(100);
-	maxHeap.print();
-	
-	maxHeap.heapSort();
+//	MaxHeap heap = {5, 4, 6, 3, 10, 2, 9, 7, 8, 1};
+	MaxHeap heap(100, true);
+	heap.print();
 
-	maxHeap.print();
+	heapSort(heap);
+
+	heap.print();
 
 	return 0;
 }

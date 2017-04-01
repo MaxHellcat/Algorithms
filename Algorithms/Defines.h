@@ -14,10 +14,10 @@
 
 using std::cout;
 
-class Array final
+class Array
 {
 public:
-	Array(size_t size, bool randomize = false) : _pData(new int[size]), _size(size)
+	Array(size_t size, bool randomize = false) : _pointer(new int[size]), _size(size)
 	{
 		if (randomize)
 		{
@@ -30,28 +30,28 @@ public:
 			for (int i = 0; i < size; i++)
 			{
 				const int val = min + (rand() % (max - min + 1));
-				_pData[i] = val;
+				_pointer[i] = val;
 			}
 		}
 	}
 
-	Array(std::initializer_list<int> list) : _pData(new int[list.size()]), _size(list.size())
+	Array(std::initializer_list<int> list) : _pointer(new int[list.size()]), _size(list.size())
 	{
 		int i = 0;
 		for (auto val : list)
 		{
-			_pData[i++] = val;
+			_pointer[i++] = val;
 		}
 	}
 
 	~Array()
 	{
-		delete [] _pData;
+		delete [] _pointer;
 	}
 
 	size_t size() const { return _size; }
 
-	int& operator[](int index) { return _pData[index]; }
+	int& operator[](int index) { return _pointer[index]; }
 
 // Auxiliary methods
 	void print() const
@@ -66,9 +66,11 @@ public:
 		cout << "], size " << size() << "\n";
 	}
 
+protected:
+	int * _pointer;
+
 private:
-	int * _pData = nullptr;
-	size_t _size = 0;
+	size_t _size;
 };
 
 #endif /* Defines_h */

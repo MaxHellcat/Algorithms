@@ -11,74 +11,69 @@
 
 #include "Defines.h"
 
-class MaxHeap
+struct MaxHeap: public Array
 {
-public:
-	MaxHeap(int heapSize) : _arr(heapSize, true), _heapSize(heapSize) {}
+	MaxHeap(size_t size, bool randomize = false) : Array(size, randomize) {}
+	MaxHeap(std::initializer_list<int> list) : Array(list) {}
 
 //	int parent(int index) { return (index - 1) / 2; }
-	int leftChildIndex(int index) { return 2*index + 1; }
-	int rightChildIndex(int index) { return 2*index + 2; }
-	int maxValue() { return _arr[0]; }
+	int left(int index) { return 2*index + 1; }
+	int right(int index) { return 2*index + 2; }
 
-	void heapSort()
+	void build()
 	{
-		buildMaxHeap();
+		heapSize = (int)size();
 
-		for (int i = 0; i < _arr.size(); i++)
-		{
-			const int tmpVal = _arr[0];
-			_arr[0] = _arr[heapSize() - 1];
-			_arr[heapSize() - 1] = tmpVal;
-
-			_heapSize = _heapSize - 1;
-
-			heapify(0);
-		}
-	}
-
-	void heapify(int index)
-	{
-		const int leftChildIndex = this->leftChildIndex(index);
-		const int rightChildIndex = this->rightChildIndex(index);
-
-		int indexOfLargest = index;
-
-		if (leftChildIndex < heapSize() && _arr[leftChildIndex] > _arr[indexOfLargest])
-		{
-			indexOfLargest = leftChildIndex;
-		}
-		if (rightChildIndex < heapSize() && _arr[rightChildIndex] > _arr[indexOfLargest])
-		{
-			indexOfLargest = rightChildIndex;
-		}
-
-		if (indexOfLargest != index)
-		{
-			const int tmpVal = _arr[index];
-			_arr[index] = _arr[indexOfLargest];
-			_arr[indexOfLargest] = tmpVal;
-
-			heapify(indexOfLargest);
-		}
-	}
-
-	void buildMaxHeap()
-	{
-		for (int i = (heapSize() - 1) / 2; i >= 0; i--)
+		for (int i = (heapSize - 1) / 2; i >= 0; i--)
 		{
 			heapify(i);
 		}
 	}
 
-	int heapSize() const { return _heapSize; }
+	void heapify(int index)
+	{
+		const int left = this->left(index);
+		const int right = this->right(index);
 
-	void print() { _arr.print(); }
+		int indexOfLargest = index;
 
-private:
-	Array _arr;
+		if (left < heapSize && _pointer[left] > _pointer[indexOfLargest])
+		{
+			indexOfLargest = left;
+		}
 
-	int _heapSize;
+		if (right < heapSize && _pointer[right] > _pointer[indexOfLargest])
+		{
+			indexOfLargest = right;
+		}
+
+		if (indexOfLargest != index)
+		{
+			const int tmpVal = _pointer[index];
+			_pointer[index] = _pointer[indexOfLargest];
+			_pointer[indexOfLargest] = tmpVal;
+
+			heapify(indexOfLargest);
+		}
+	}
+
+	int heapSize = 0;
 };
+
+void heapSort(MaxHeap & heap)
+{
+	heap.build();
+
+	for (int i = (int)heap.size() - 1; i > 0 ; i--)
+	{
+		const int tmpVal = heap[0];
+		heap[0] = heap[i];
+		heap[i] = tmpVal;
+
+		heap.heapSize = heap.heapSize - 1;
+
+		heap.heapify(0);
+	}
+}
 
 #endif /* HeapSort_h */
