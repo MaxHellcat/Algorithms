@@ -20,6 +20,8 @@ struct MaxHeap: public Array
 	int left(int index) { return 2*index + 1; }
 	int right(int index) { return 2*index + 2; }
 
+// Time: O(n)
+// Space: O(1)
 	void build()
 	{
 		heapSize = (int)size();
@@ -30,6 +32,8 @@ struct MaxHeap: public Array
 		}
 	}
 
+// Time: O(lgn)
+// Space: O(1)
 	void heapify(int index)
 	{
 		const int left = this->left(index);
@@ -60,6 +64,8 @@ struct MaxHeap: public Array
 	int heapSize = 0;
 };
 
+// Time: Ø(n•lgn) - worst/average, O(n•lgn) - best
+// Space: O(1), not stable
 void heapSort(MaxHeap & heap)
 {
 	heap.build();
