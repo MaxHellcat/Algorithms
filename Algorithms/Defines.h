@@ -54,6 +54,19 @@ public:
 	int& operator[](int index) { return _pointer[index]; }
 
 // Auxiliary methods
+	bool isSorted() const
+	{
+		for (int i = 0; i < size() - 1; i++)
+		{
+			if (_pointer[i] > _pointer[i+1])
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	void print() const
 	{
 		cout << "[";

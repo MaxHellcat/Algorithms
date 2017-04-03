@@ -26,11 +26,11 @@ int main(int argc, const char * argv[])
 
 //	MaxHeap heap = {5, 4, 6, 3, 10, 2, 9, 7, 8, 1};
 	MaxHeap heap(100, true);
-	heap.print();
-
+//	heap.print();
 	heapSort(heap);
+//	heap.print();
 
-	heap.print();
+	cout << "Sorted: " << heap.isSorted() << "\n";
 
 	return 0;
 }
