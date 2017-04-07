@@ -14,6 +14,18 @@
 
 using std::cout;
 
+int random(int min, int max)
+{
+	return min + (rand() % (max - min + 1));
+}
+
+void swap(int & val1, int & val2)
+{
+	const int tmpVal = val1;
+	val1 = val2;
+	val2 = tmpVal;
+}
+
 class Array
 {
 public:
@@ -25,12 +37,9 @@ public:
 			const int min = includeNegative ? -(int)size/2 : 1;
 			const int max = includeNegative ? (int)size/2 : (int)size;
 
-			srand( unsigned(time(nullptr)) );
-
 			for (int i = 0; i < size; i++)
 			{
-				const int val = min + (rand() % (max - min + 1));
-				_pointer[i] = val;
+				_pointer[i] = random(min, max);
 			}
 		}
 	}

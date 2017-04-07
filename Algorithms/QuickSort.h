@@ -12,6 +12,9 @@
 #include "Defines.h"
 
 int partition(Array & arr, int leftIndex, int rightIndex);
+int randomPartition(Array & arr, int leftIndex, int rightIndex);
+
+int runCount = 0;
 
 void quickSort(Array & arr, int leftIndex, int rightIndex)
 {
@@ -19,9 +22,13 @@ void quickSort(Array & arr, int leftIndex, int rightIndex)
 //	print(arr, leftIndex, rightIndex);
 //	cout << "\n";
 
+	runCount++;
+
 	if (leftIndex < rightIndex)
 	{
-		const int q = partition(arr, leftIndex, rightIndex);
+//		const int q = partition(arr, leftIndex, rightIndex);
+		const int q = randomPartition(arr, leftIndex, rightIndex);
+
 		quickSort(arr, leftIndex, q - 1);
 		quickSort(arr, q + 1, rightIndex);
 	}
@@ -31,30 +38,34 @@ int partition(Array & arr, int leftIndex, int rightIndex)
 {
 	const int x = arr[rightIndex];
 
-//	cout << "\nIn partition, pivot: " << x << ", ";
+//	cout << "Pivot: " << arr[rightIndex] << "\n";
 
 	int i = leftIndex - 1;
 
 	for (int j = leftIndex; j < rightIndex; j++)
 	{
+		runCount++;
+
 		if (arr[j] <= x)
 		{
 			i = i + 1;
 
-			const int tmpVal = arr[i];
-			arr[i] = arr[j];
-			arr[j] = tmpVal;
+			swap(arr[i], arr[j]);
 		}
 	}
 
-	const int tmpVal = arr[i + 1];
-	arr[i + 1] = arr[rightIndex];
-	arr[rightIndex] = tmpVal;
-	
-//	cout << "q: " << i + 1 << "\n";
-//	cout << "\n";
+	swap(arr[i + 1], arr[rightIndex]);
 
 	return i + 1;
+}
+
+int randomPartition(Array & arr, int leftIndex, int rightIndex)
+{
+	const int pivotIndex = random(leftIndex, rightIndex);
+
+	swap(arr[pivotIndex], arr[rightIndex]);
+
+	return partition(arr, leftIndex, rightIndex);
 }
 
 #endif /* QuickSort_h */
