@@ -20,10 +20,10 @@ void mergeSort(Array & arr, int leftIndex, int rightIndex)
 	if (leftIndex < rightIndex)
 	{
 		const int midIndex = (leftIndex + rightIndex) / 2;
-		
+
 		mergeSort(arr, leftIndex, midIndex);
 		mergeSort(arr, midIndex + 1, rightIndex);
-		
+
 		merge(arr, leftIndex, midIndex, rightIndex);
 	}
 }

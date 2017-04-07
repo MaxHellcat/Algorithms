@@ -29,9 +29,7 @@ void selectionSort(Array & arr)
 
 		if (minJndex != i)
 		{
-			const int tmpVal = arr[i];
-			arr[i] = arr[minJndex];
-			arr[minJndex] = tmpVal;
+			swap(arr[i], arr[minJndex]);
 		}
 	}
 }

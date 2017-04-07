@@ -16,9 +16,9 @@ int main(int argc, const char * argv[])
 	srand( unsigned(time(nullptr)) );
 
 //	Array arr = {5, 4, 6, 3, 10, 2, 9, 7, 8, 1};
-//	Array arr(100, true);
+	Array arr(100, true);
 
-	Array arr = {1, 2, 3, 4, 5, 6, 7, 8};
+//	Array arr = {1, 2, 3, 4, 5, 6, 7, 8};
 //	Array arr = {8, 7, 6, 5, 4, 3, 2, 1};
 
 	print(arr);
@@ -30,9 +30,9 @@ int main(int argc, const char * argv[])
 
 //	MaxHeap heap = {5, 4, 6, 3, 10, 2, 9, 7, 8, 1};
 //	MaxHeap heap(100, true);
-//	heap.print();
+//	print(heap);
 //	heapSort(heap);
-//	heap.print();
+//	print(heap);
 
 	return 0;
 }

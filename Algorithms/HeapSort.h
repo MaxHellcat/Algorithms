@@ -53,9 +53,7 @@ struct MaxHeap: public Array
 
 		if (indexOfLargest != index)
 		{
-			const int tmpVal = _pointer[index];
-			_pointer[index] = _pointer[indexOfLargest];
-			_pointer[indexOfLargest] = tmpVal;
+			swap(_pointer[index], _pointer[indexOfLargest]);
 
 			heapify(indexOfLargest);
 		}
@@ -72,9 +70,7 @@ void heapSort(MaxHeap & heap)
 
 	for (int i = (int)heap.size() - 1; i > 0 ; i--)
 	{
-		const int tmpVal = heap[0];
-		heap[0] = heap[i];
-		heap[i] = tmpVal;
+		swap(heap[0], heap[i]);
 
 		heap.heapSize = heap.heapSize - 1;
 
