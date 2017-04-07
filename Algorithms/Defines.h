@@ -54,9 +54,14 @@ public:
 	int& operator[](int index) { return _pointer[index]; }
 
 // Auxiliary methods
-	bool isSorted() const
+	bool isSorted(int leftIndex = 0, int rightIndex = INT_MIN) const
 	{
-		for (int i = 0; i < size() - 1; i++)
+		if (rightIndex == INT_MIN)
+		{
+			rightIndex = (int)size() - 1;
+		}
+
+		for (int i = leftIndex; i < rightIndex; i++)
 		{
 			if (_pointer[i] > _pointer[i+1])
 			{
@@ -67,23 +72,29 @@ public:
 		return true;
 	}
 
-	void print() const
-	{
-		cout << "[";
-
-		for (int i = 0; i < size(); i++)
-		{
-			cout << const_cast<Array*>(this)->operator[](i) << ((i < size() - 1) ? ", " : "");
-		}
-
-		cout << "], size " << size() << "\n";
-	}
-
 protected:
 	int * _pointer;
 
 private:
 	size_t _size;
 };
+
+void print(Array & arr, int leftIndex = 0, int rightIndex = INT_MIN)
+{
+	if (rightIndex == INT_MIN)
+	{
+		rightIndex = (int)arr.size() - 1;
+	}
+
+	cout << "[";
+
+	for (int i = leftIndex; i < rightIndex + 1; i++)
+	{
+		cout << const_cast<Array*>(&arr)->operator[](i) << ((i < rightIndex) ? ", " : "");
+	}
+
+	cout << "] (size " << rightIndex - leftIndex + 1 << ", " << (arr.isSorted(leftIndex, rightIndex)?"sorted":"unsorted") << ")\n";
+}
+
 
 #endif /* Defines_h */

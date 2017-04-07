@@ -14,5 +14,6 @@
 #include "BubbleSort.h"
 #include "MergeSort.h"
 #include "HeapSort.h"
+#include "QuickSort.h"
 
 #endif /* Sorting_h */
