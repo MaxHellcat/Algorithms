@@ -13,7 +13,7 @@
 
 struct MaxHeap: public Array
 {
-	MaxHeap(size_t size, bool randomize = false) : Array(size, randomize) {}
+	MaxHeap(size_t size) : Array(size) {}
 	MaxHeap(std::initializer_list<int> list) : Array(list) {}
 
 //	int parent(int index) { return (index - 1) / 2; }

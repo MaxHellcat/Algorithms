@@ -29,18 +29,11 @@ void swap(int & val1, int & val2)
 class Array
 {
 public:
-	Array(size_t size, bool randomize = false) : _pointer(new int[size]), _size(size)
+	Array(size_t size) : _pointer(new int[size]), _size(size)
 	{
-		if (randomize)
+		for (int i = 0; i < size; i++)
 		{
-			const bool includeNegative = false;
-			const int min = includeNegative ? -(int)size/2 : 1;
-			const int max = includeNegative ? (int)size/2 : (int)size;
-
-			for (int i = 0; i < size; i++)
-			{
-				_pointer[i] = random(min, max);
-			}
+			_pointer[i] = i + 1;
 		}
 	}
 
@@ -62,7 +55,6 @@ public:
 
 	int& operator[](int index) { return _pointer[index]; }
 
-// Auxiliary methods
 	bool isSorted(int leftIndex = 0, int rightIndex = INT_MIN) const
 	{
 		if (rightIndex == INT_MIN)
@@ -79,6 +71,15 @@ public:
 		}
 
 		return true;
+	}
+
+	// Produces a uniform random permutation (any of n! with equal probability) of the array
+	void permute()
+	{
+		for (int i = 0; i < _size; i++)
+		{
+			swap(_pointer[i], _pointer[random(i, (int)size() - 1)]);
+		}
 	}
 
 protected:
