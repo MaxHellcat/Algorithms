@@ -14,6 +14,8 @@
 int partition(Array & arr, int leftIndex, int rightIndex);
 int randomPartition(Array & arr, int leftIndex, int rightIndex);
 
+// Time: Ø(nlgn) - expected/best, Ø(n^2) - worst
+// Space: O(1)
 void quickSort(Array & arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)
