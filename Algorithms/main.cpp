@@ -16,8 +16,9 @@ int main(int argc, const char * argv[])
 	srand( (unsigned)time(nullptr) );
 
 //	Array arr = {5, 4, 6, 3, 10, 2, 9, 7, 8, 1};
-	Array arr = {4, 7, 16, 9, 14, 15, 5, 11, 3, 12, 1, 6, 13, 10, 2, 8};
-//	Array arr(16);
+//	Array arr = {4, 7, 16, 9, 14, 15, 5, 11, 3, 12, 1, 6, 13, 10, 2, 8};
+	Array arr(16);
+	arr.permute();
 	print(arr);
 
 	quickSort(arr, 0, (int)arr.size() - 1);
