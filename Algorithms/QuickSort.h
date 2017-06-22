@@ -14,16 +14,8 @@
 int partition(Array & arr, int leftIndex, int rightIndex);
 int randomPartition(Array & arr, int leftIndex, int rightIndex);
 
-int runCount = 0;
-
 void quickSort(Array & arr, int leftIndex, int rightIndex)
 {
-//	cout << "In quickSort, arr: \n";
-//	print(arr, leftIndex, rightIndex);
-//	cout << "\n";
-
-	runCount++;
-
 	if (leftIndex < rightIndex)
 	{
 //		const int q = partition(arr, leftIndex, rightIndex);
@@ -38,14 +30,10 @@ int partition(Array & arr, int leftIndex, int rightIndex)
 {
 	const int x = arr[rightIndex];
 
-//	cout << "Pivot: " << arr[rightIndex] << "\n";
-
 	int i = leftIndex - 1;
 
 	for (int j = leftIndex; j < rightIndex; j++)
 	{
-		runCount++;
-
 		if (arr[j] <= x)
 		{
 			i = i + 1;
