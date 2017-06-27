@@ -12,14 +12,12 @@
 #include "iostream"
 //#include "cstdlib" // For rand, srand
 
-using std::cout;
-
 int random(int min, int max)
 {
 	return min + (rand() % (max - min + 1));
 }
 
-void swap(int & val1, int & val2)
+void swap(int &val1, int &val2)
 {
 	const int tmpVal = val1;
 	val1 = val2;
@@ -53,7 +51,26 @@ public:
 
 	size_t size() const { return _size; }
 
-	int& operator[](int index) { return _pointer[index]; }
+	int &operator[](size_t index) { return _pointer[index]; }
+	const int &operator[](size_t index) const { return _pointer[index]; }
+
+	const Array &operator=(const Array &rhs)
+	{
+		if (size() != rhs.size())
+		{
+			delete [] _pointer;
+
+			_pointer = new int[rhs.size()];
+			_size = rhs.size();
+		}
+
+		for (int i = 0; i < size(); i++)
+		{
+			_pointer[i] = rhs[i];
+		}
+
+		return *this;
+	}
 
 	bool isSorted(int leftIndex = 0, int rightIndex = INT_MIN) const
 	{
@@ -82,8 +99,12 @@ public:
 		}
 	}
 
+	// To support ranged for loop
+	int *begin() { return _pointer; }
+	int *end() { return _pointer + _size; }
+
 protected:
-	int * _pointer;
+	int *_pointer;
 
 private:
 	size_t _size;
@@ -96,14 +117,14 @@ void print(Array & arr, int leftIndex = 0, int rightIndex = INT_MIN)
 		rightIndex = (int)arr.size() - 1;
 	}
 
-	cout << "[";
+	std::cout << "[";
 
 	for (int i = leftIndex; i < rightIndex + 1; i++)
 	{
-		cout << const_cast<Array*>(&arr)->operator[](i) << ((i < rightIndex) ? ", " : "");
+		std::cout << const_cast<Array*>(&arr)->operator[](i) << ((i < rightIndex) ? ", " : "");
 	}
 
-	cout << "] (size " << rightIndex - leftIndex + 1 << ", " << (arr.isSorted(leftIndex, rightIndex)?"sorted":"unsorted") << ")\n";
+	std::cout << "] (size " << rightIndex - leftIndex + 1 << ", " << (arr.isSorted(leftIndex, rightIndex)?"sorted":"unsorted") << ")\n";
 }
 
 

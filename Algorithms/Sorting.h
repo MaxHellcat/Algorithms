@@ -15,5 +15,6 @@
 #include "MergeSort.h"
 #include "HeapSort.h"
 #include "QuickSort.h"
+#include "CountingSort.h"
 
 #endif /* Sorting_h */
