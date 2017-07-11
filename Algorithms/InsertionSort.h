@@ -13,6 +13,7 @@
 
 // Time: Ø(n^2) - worst/average, Ø(n) - best
 // Space: Ø(1)
+// Stable: true
 void insertionSort(Array & arr)
 {
 	for (int i = 1; i < arr.size(); i++)
@@ -27,10 +28,25 @@ void insertionSort(Array & arr)
 			j = j - 1;
 		}
 
-		if (j < i - 1)
+		if (j != i - 1)
 		{
 			arr[j + 1] = key;
 		}
+	}
+}
+
+void test_insertionSort()
+{
+	for (int i=0; i < 10; i++)
+	{
+		Array arr(10);
+		arr.permute();
+
+		print(arr);
+		insertionSort(arr);
+		print(arr);
+
+		std::cout << std::endl;
 	}
 }
 
