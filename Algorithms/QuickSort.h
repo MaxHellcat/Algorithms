@@ -15,8 +15,11 @@ int partition(Array &arr, int leftIndex, int rightIndex);
 int randomPartition(Array &arr, int leftIndex, int rightIndex);
 int hoarePartition(Array &arr, int leftIndex, int rightIndex);
 
-// Time: Ø(nlgn) - expected/best, Ø(n^2) - worst
-// Space: O(1)
+// TODO: Add test cases
+
+// Time: Ø(n*lgn) - expected/best, Ø(n^2) - worst
+// Space: O(1) (maybe O(lgn) for expected/best and O(n) for the worst?)
+// Stable: false (classic implementation with Lomuto/Hoare partitions as provided here)
 void quickSort(Array &arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)

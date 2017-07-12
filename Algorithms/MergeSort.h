@@ -11,11 +11,14 @@
 
 #include "Defines.h"
 
-void merge(Array & arr, int leftIndex, int midIndex, int rightIndex);
+void merge(Array &arr, int leftIndex, int midIndex, int rightIndex);
 
-// Time: Ø(n•lgn) - worst/average/best
+// TODO: Add test cases
+
+// Time: Ø(n*lgn) - worst/average/best
 // Space: Ø(n)
-void mergeSort(Array & arr, int leftIndex, int rightIndex)
+// Stable: true
+void mergeSort(Array &arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)
 	{
@@ -28,7 +31,7 @@ void mergeSort(Array & arr, int leftIndex, int rightIndex)
 	}
 }
 
-void merge(Array & arr, int leftIndex, int midIndex, int rightIndex)
+void merge(Array &arr, int leftIndex, int midIndex, int rightIndex)
 {
 	const int kLeftArraySize = midIndex - leftIndex + 1;
 	Array leftArray(kLeftArraySize);

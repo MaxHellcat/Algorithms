@@ -14,7 +14,7 @@
 // Time: Ø(n^2) - worst/average, Ø(n) - best
 // Space: Ø(1)
 // Stable: true
-void insertionSort(Array & arr)
+void insertionSort(Array &arr)
 {
 	for (int i = 1; i < arr.size(); i++)
 	{
@@ -37,7 +37,7 @@ void insertionSort(Array & arr)
 
 void test_insertionSort()
 {
-	for (int i=0; i < 10; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Array arr(10);
 		arr.permute();

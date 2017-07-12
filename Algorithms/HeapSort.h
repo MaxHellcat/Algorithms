@@ -62,9 +62,12 @@ struct MaxHeap: public Array
 	int heapSize = 0;
 };
 
-// Time: Ø(n•lgn) - worst/average, O(n•lgn) - best
-// Space: O(1), not stable
-void heapSort(MaxHeap & heap)
+// TODO: Add test cases
+
+// Time: Ø(n*lgn) - worst/average, O(n*lgn) - best(?)
+// Space: O(1)
+// Stable: false
+void heapSort(MaxHeap &heap)
 {
 	heap.build();
 
