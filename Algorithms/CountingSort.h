@@ -18,12 +18,13 @@
 //			A = {5, 3, 5, 6, 1, 4, 3, 3, 2, 1} (k < n, running time: Ø(n)),
 //			A = {1, 35, 135, 25, 3} (k > n, running time: Ø(k))
 
-// Time: Ø(n) (provided k = O(n), which is typical case)
+// Time: Ø(n + k) (or Ø(n), provided k = O(n), which is a typical case as Cormen claims)
 // Space: Ø(n)
 // Stable: yes
 void countingSort(Array &arr, int k)
 {
-	Array sortedArray(arr.size()), tmpArray(k + 1);
+	Array sortedArray(arr.size());
+	Array tmpArray(k + 1);
 
 	for (auto &val : tmpArray)
 	{
