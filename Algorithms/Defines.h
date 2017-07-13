@@ -90,6 +90,20 @@ public:
 		return true;
 	}
 
+	int max() const
+	{
+		int max = INT_MIN;
+
+		for (auto it = begin(); it < end(); it++)
+		{
+			if (*it > max) {
+				max = *it;
+			}
+		}
+
+		return max;
+	}
+
 	// Produces a uniform random permutation (any of n! with equal probability) of the array
 	void permute()
 	{
@@ -100,8 +114,10 @@ public:
 	}
 
 	// To support ranged for loop
-	int *begin() { return _pointer; }
-	int *end() { return _pointer + _size; }
+//	int *begin() { return _pointer; }
+	int *begin() const { return _pointer; }
+//	int *end() { return _pointer + _size; }
+	int *end() const { return _pointer + _size; }
 
 protected:
 	int *_pointer;
@@ -110,7 +126,7 @@ private:
 	size_t _size;
 };
 
-void print(Array & arr, int leftIndex = 0, int rightIndex = INT_MIN)
+void print(Array &arr, int leftIndex = 0, int rightIndex = INT_MIN)
 {
 	if (rightIndex == INT_MIN)
 	{

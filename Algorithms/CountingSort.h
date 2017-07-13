@@ -20,7 +20,7 @@
 
 // Time: Ø(n + k) (or Ø(n), provided k = O(n), which is a typical case as Cormen claims)
 // Space: Ø(n)
-// Stable: yes
+// Stable: true
 void countingSort(Array &arr, int k)
 {
 	Array sortedArray(arr.size());
@@ -55,30 +55,26 @@ void test_countingSort()
 {
 	{
 		Array arr = {1, 35, 135, 25, 3};
-		const int kMaxElement = 135; // TODO: Replace with method
 
 		print(arr);
-		countingSort(arr, kMaxElement);
+		countingSort(arr, arr.max());
 		print(arr);
 	}
 
 	{
 		Array arr = {5, 3, 5, 6, 1, 4, 3, 3, 5, 1};
-		const int kMaxElement = 6; // TODO: Replace with method
 
 		print(arr);
-		countingSort(arr, kMaxElement);
+		countingSort(arr, arr.max());
 		print(arr);
 	}
 
 	{
-		const int kMaxElement = 25; // TODO: Replace with method
-		Array arr(kMaxElement);
-
+		Array arr(25);
 		arr.permute();
 
 		print(arr);
-		countingSort(arr, kMaxElement);
+		countingSort(arr, arr.max());
 		print(arr);
 	}
 }
