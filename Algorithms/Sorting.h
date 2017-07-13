@@ -16,5 +16,6 @@
 #include "HeapSort.h"
 #include "QuickSort.h"
 #include "CountingSort.h"
+#include "RadixSort.h"
 
 #endif /* Sorting_h */

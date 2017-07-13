@@ -24,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		AE1EAA221F02856700F1720E /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
+		AE731FA01F177E36007C4CB4 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
 		AE9D58821E8B241E009BC63C /* BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
 		AEBD495E1E8E947A0041BC3B /* MergeSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MergeSort.h; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 				AEBD49601E8ED32F0041BC3B /* HeapSort.h */,
 				AED96DFE1E97B60D0074202A /* QuickSort.h */,
 				AE1EAA221F02856700F1720E /* CountingSort.h */,
+				AE731FA01F177E36007C4CB4 /* RadixSort.h */,
 				AEF12C2F1E8A82DD0078525D /* main.cpp */,
 				AEF12C361E8A85B20078525D /* Defines.h */,
 			);

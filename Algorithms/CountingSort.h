@@ -11,17 +11,20 @@
 
 #include "Defines.h"
 
+// Note: When indexOfDigitToSortBy isn't -1, the counting sort is used as part of a radix sort, i.e.
+// sorts the input array by a specific digit.
+
 // Prerequisites:
-// Input array consists of n integers, each being in the range 0 to k.
-// Therefore it's crucial to supply correct k, which ordinarily is the max element in the array.
+// Input array consists of n integers, each being in the range 0 to k. Therefore it's crucial
+// to supply correct k, which ordinarily is the max element in the array.
 // Example:	A = {1, 10, 9, 5, 3, 6, 7, 2, 8, 4} (k = n, running time: Ø(n)),
 //			A = {5, 3, 5, 6, 1, 4, 3, 3, 2, 1} (k < n, running time: Ø(n)),
 //			A = {1, 35, 135, 25, 3} (k > n, running time: Ø(k))
 
 // Time: Ø(n + k) (or Ø(n), provided k = O(n), which is a typical case as Cormen claims)
-// Space: Ø(n)
+// Space: Ø(n + k)
 // Stable: true
-void countingSort(Array &arr, int k)
+void countingSort(Array &arr, int k, int indexOfDigitToSortBy = -1)
 {
 	Array sortedArray(arr.size());
 	Array tmpArray(k + 1);
@@ -31,9 +34,19 @@ void countingSort(Array &arr, int k)
 		val = 0;
 	}
 
+	const bool partOfRadixSort = indexOfDigitToSortBy != -1;
+
 	for (int j = 0; j < arr.size(); j++)
 	{
-		tmpArray[arr[j]] += 1;
+		if (partOfRadixSort)
+		{
+			const int digit = digitAtIndex(arr[j], indexOfDigitToSortBy);
+			tmpArray[digit] += 1;
+		}
+		else
+		{
+			tmpArray[arr[j]] += 1;
+		}
 	}
 
 	for (int i = 1; i < tmpArray.size(); i++)
@@ -43,8 +56,10 @@ void countingSort(Array &arr, int k)
 
 	for (int j = (int)arr.size() - 1; j >= 0; j--)
 	{
-		sortedArray[tmpArray[arr[j]] - 1] = arr[j];
-		tmpArray[arr[j]] -= 1;
+		const int val = partOfRadixSort ? digitAtIndex(arr[j], indexOfDigitToSortBy) : arr[j];
+
+		sortedArray[tmpArray[val] - 1] = arr[j];
+		tmpArray[val] -= 1;
 	}
 
 	// Note, copying back for convenience only, it's not a part of counting sort.
