@@ -81,4 +81,19 @@ void heapSort(MaxHeap &heap)
 	}
 }
 
+void test_heapSort()
+{
+	for (int i = 2; i < 10; i++)
+	{
+		MaxHeap arr(i);
+		arr.permute();
+
+		print(arr);
+		heapSort(arr);
+		print(arr);
+
+		std::cout << std::endl;
+	}
+}
+
 #endif /* HeapSort_h */

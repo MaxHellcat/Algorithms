@@ -98,4 +98,19 @@ int hoarePartition(Array &arr, int leftIndex, int rightIndex)
 	}
 }
 
+void test_quickSort()
+{
+	for (int i = 2; i < 10; i++)
+	{
+		Array arr(i);
+		arr.permute();
+
+		print(arr);
+		quickSort(arr, 0, static_cast<int>(arr.size() - 1));
+		print(arr);
+
+		std::cout << std::endl;
+	}
+}
+
 #endif /* QuickSort_h */

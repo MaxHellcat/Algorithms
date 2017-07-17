@@ -37,9 +37,9 @@ void insertionSort(Array &arr)
 
 void test_insertionSort()
 {
-	for (int i = 0; i < 10; i++)
+	for (int i = 2; i < 10; i++)
 	{
-		Array arr(10);
+		Array arr(i);
 		arr.permute();
 
 		print(arr);

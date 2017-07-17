@@ -13,8 +13,6 @@
 
 void merge(Array &arr, int leftIndex, int midIndex, int rightIndex);
 
-// TODO: Add test cases
-
 // Time: Ø(n*lgn) - worst/average/best
 // Space: Ø(n)
 // Stable: true
@@ -87,6 +85,21 @@ void merge(Array &arr, int leftIndex, int midIndex, int rightIndex)
 
 			break;
 		}
+	}
+}
+
+void test_mergeSort()
+{
+	for (int i = 2; i < 10; i++)
+	{
+		Array arr(i);
+		arr.permute();
+
+		print(arr);
+		mergeSort(arr, 0, static_cast<int>(arr.size() - 1));
+		print(arr);
+
+		std::cout << std::endl;
 	}
 }
 

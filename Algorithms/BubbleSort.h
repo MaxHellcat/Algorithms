@@ -39,4 +39,20 @@ void bubbleSort(Array & arr)
 	}
 }
 
+void test_bubbleSort()
+{
+	for (int i = 2; i < 10; i++)
+	{
+		Array arr(i);
+		arr.permute();
+
+		print(arr);
+		bubbleSort(arr);
+		print(arr);
+
+		std::cout << std::endl;
+	}
+}
+
+
 #endif /* BubbleSort_h */

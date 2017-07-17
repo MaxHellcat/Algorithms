@@ -34,4 +34,20 @@ void selectionSort(Array & arr)
 	}
 }
 
+void test_selectionSort()
+{
+	for (int i = 2; i < 10; i++)
+	{
+		Array arr(i);
+		arr.permute();
+
+		print(arr);
+		selectionSort(arr);
+		print(arr);
+
+		std::cout << std::endl;
+	}
+}
+
+
 #endif /* SelectionSort_h */
