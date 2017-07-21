@@ -139,9 +139,7 @@ public:
 	}
 
 	// To support ranged for loop
-//	int *begin() { return _pointer; }
 	int *begin() const { return _pointer; }
-//	int *end() { return _pointer + _size; }
 	int *end() const { return _pointer + _size; }
 
 protected:

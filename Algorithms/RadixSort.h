@@ -10,7 +10,7 @@
 #define RadixSort_h
 
 #include "Defines.h"
-#include "CountingSort.h"
+#include "CountingSort.h" // Use it as a stable sub-sort
 
 // Prerequisites:
 // The implementation here assumes all numbers have the same number of digits. It can be easily

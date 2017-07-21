@@ -62,8 +62,6 @@ struct MaxHeap: public Array
 	int heapSize = 0;
 };
 
-// TODO: Add test cases
-
 // Time: Ø(n*lgn) - worst/average, O(n*lgn) - best(?)
 // Space: O(1)
 // Stable: false
