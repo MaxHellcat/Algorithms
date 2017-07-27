@@ -1,29 +1,27 @@
 //
-//  SinglyLinkedList.h
+//  DoublyLinkedList.h
 //  Algorithms
 //
-//  Created by Max Reshetey on 27/07/2017.
+//  Created by Max Reshetey on 28/07/2017.
 //  Copyright © 2017 Max Reshetey. All rights reserved.
 //
 
-#ifndef SinglyLinkedList_h
-#define SinglyLinkedList_h
+#ifndef DoublyLinkedList_h
+#define DoublyLinkedList_h
 
-#include "iostream"
-
-class SinglyLinkedList
+class DoublyLinkedList
 {
 public:
 	struct Node
 	{
 		Node(int aKey) : key(aKey) {}
 
-		Node * next = nullptr;
+		Node *next = nullptr, *prev = nullptr;
 		int key;
 	};
 
 public:
-// Core methods
+	// Core methods
 	Node *search(int aKey) const
 	{
 		auto node = head();
@@ -42,13 +40,33 @@ public:
 
 		if (empty() || atNode == head())
 		{
-			aNode->next = _head; // TODO: See if it can be merged with similar below
+			aNode->next = _head;
+
+			if (!empty())
+			{
+				_head->prev = aNode;
+			}
+
 			_head = aNode;
+		}
+		else if (!atNode)
+		{
+			auto tail = head();
+
+			while (tail->next)
+			{
+				tail = tail->next;
+			}
+
+			tail->next = aNode;
+			aNode->prev = tail;
 		}
 		else
 		{
+			atNode->prev->next = aNode;
+			aNode->prev = atNode->prev;
 			aNode->next = atNode;
-			previous(atNode)->next = aNode;
+			atNode->prev = aNode;
 		}
 	}
 
@@ -58,11 +76,16 @@ public:
 
 		if (aNode == head())
 		{
-			_head = _head->next;
+			_head = aNode->next;
 		}
 		else
 		{
-			previous(aNode)->next = aNode->next;
+			aNode->prev->next = aNode->next;
+		}
+
+		if (aNode->next) // Removing not tail
+		{
+			aNode->next->prev = aNode->prev;
 		}
 
 		delete aNode;
@@ -72,27 +95,18 @@ public:
 	Node *head() const { return _head; }
 	bool empty() const { return _head == nullptr; }
 
-	void pushFront(Node *aNode)
-	{
-		insert(aNode, head());
-	}
-
-	void pushBack(Node *aNode)
-	{
-		insert(aNode, nullptr);
-	}
-
+// TODO: Duplicates SinglyLinkedList::description()
 	std::string description() const
 	{
 		std::string desc = "(";
-
+		
 		auto * node = head();
-
+		
 		while (node)
 		{
 			desc += std::to_string(node->key);
 			desc += (node->next ? ", " : "");
-
+			
 			node = node->next;
 		}
 
@@ -101,40 +115,28 @@ public:
 		return desc;
 	}
 
-private:
-	Node *previous(Node *ofNode) const
-	{
-		auto prevNode = head();
-
-		while (prevNode && prevNode->next != ofNode)
-		{
-			prevNode = prevNode->next;
-		}
-
-		return prevNode;
-	}
 
 private:
 	Node *_head = nullptr;
 };
 
-void test_SinglyLinkedList()
+void test_DoublyLinkedList()
 {
 	const int kNumberOfElements = 10;
 
-	SinglyLinkedList list;
+	DoublyLinkedList list;
 
 	for (int i = 0; i < kNumberOfElements; i++)
 	{
-		list.pushBack(new SinglyLinkedList::Node(i));
-		list.pushFront(new SinglyLinkedList::Node(kNumberOfElements + i));
+		list.insert(new DoublyLinkedList::Node(i), nullptr);
+		list.insert(new DoublyLinkedList::Node(kNumberOfElements + i), list.head());
 	}
 	std::cout << list.description() << std::endl << std::endl;
 
 	auto node = list.search(12);
 	std::cout << "Searched element " << node << ", key " << node->key << std::endl << std::endl;
 
-	list.insert(new SinglyLinkedList::Node(-49), node);
+	list.insert(new DoublyLinkedList::Node(-49), node);
 	std::cout << list.description() << std::endl << std::endl;
 
 	list.remove(node);
@@ -145,6 +147,6 @@ void test_SinglyLinkedList()
 		list.remove(list.head());
 	}
 	std::cout << list.description() << std::endl << std::endl;
-};
+}
 
-#endif /* SinglyLinkedList_h */
+#endif /* DoublyLinkedList_h */

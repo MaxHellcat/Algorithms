@@ -10,8 +10,7 @@
 
 //#include "Sorting.h"
 
-//#include "Array.h"
-#include "SinglyLinkedList.h"
+#include "Containers.h"
 
 #include "Defines.h"
 
@@ -21,6 +20,7 @@ int main(int argc, const char * argv[])
 	srand( (unsigned)time(nullptr) );
 
 	test_SinglyLinkedList();
+	test_DoublyLinkedList();
 
 	return 0;
 }

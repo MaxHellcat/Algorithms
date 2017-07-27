@@ -25,6 +25,8 @@
 /* Begin PBXFileReference section */
 		AE0DAA461F2A0B6A00EE5927 /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
 		AE0DAA471F2A149B00EE5927 /* SinglyLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinglyLinkedList.h; sourceTree = "<group>"; };
+		AE0DAA481F2A9AE600EE5927 /* DoublyLinkedList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DoublyLinkedList.h; sourceTree = "<group>"; };
+		AE0DAA491F2A9B4500EE5927 /* Containers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Containers.h; sourceTree = "<group>"; };
 		AE1EAA221F02856700F1720E /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
 		AE731FA01F177E36007C4CB4 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
@@ -55,6 +57,8 @@
 			children = (
 				AE0DAA461F2A0B6A00EE5927 /* Array.h */,
 				AE0DAA471F2A149B00EE5927 /* SinglyLinkedList.h */,
+				AE0DAA481F2A9AE600EE5927 /* DoublyLinkedList.h */,
+				AE0DAA491F2A9B4500EE5927 /* Containers.h */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
