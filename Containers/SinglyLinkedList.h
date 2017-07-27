@@ -40,15 +40,13 @@ public:
 	{
 		if (empty() || atNode == head())
 		{
-			aNode->next = _head;
+			aNode->next = _head; // TODO: See if it can be merged with similar below
 			_head = aNode;
 		}
 		else
 		{
-			auto prevAtNode = previous(atNode);
-
-			aNode->next = prevAtNode->next;
-			prevAtNode->next = aNode;
+			aNode->next = atNode;
+			previous(atNode)->next = aNode;
 		}
 	}
 
@@ -57,15 +55,13 @@ public:
 		if (aNode == head())
 		{
 			_head = _head->next;
-			delete aNode;
 		}
 		else
 		{
-			auto prevNode = previous(aNode);
-
-			prevNode->next = aNode->next;
-			delete aNode;
+			previous(aNode)->next = aNode->next;
 		}
+
+		delete aNode;
 	}
 
 // Extra methods
