@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AE0DAA461F2A0B6A00EE5927 /* Array.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Array.h; sourceTree = "<group>"; };
 		AE1EAA221F02856700F1720E /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
 		AE731FA01F177E36007C4CB4 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
@@ -48,9 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AE0DAA451F2A0B6A00EE5927 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				AE0DAA461F2A0B6A00EE5927 /* Array.h */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
 		AEF12C231E8A82DD0078525D = {
 			isa = PBXGroup;
 			children = (
+				AE0DAA451F2A0B6A00EE5927 /* Containers */,
 				AEF12C2E1E8A82DD0078525D /* Algorithms */,
 				AEF12C2D1E8A82DD0078525D /* Products */,
 			);

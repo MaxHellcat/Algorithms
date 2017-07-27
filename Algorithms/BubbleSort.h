@@ -9,11 +9,11 @@
 #ifndef BubbleSort_h
 #define BubbleSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 // Time: Ø(n^2) - worst/average/best (Note, best can be Ø(n) with slight modification)
 // Space: Ø(1)
-void bubbleSort(Array & arr)
+void bubbleSort(Array &arr)
 {
 	for (int i = 0; i < arr.size() - 1; i++)
 	{
@@ -53,6 +53,5 @@ void test_bubbleSort()
 		std::cout << std::endl;
 	}
 }
-
 
 #endif /* BubbleSort_h */

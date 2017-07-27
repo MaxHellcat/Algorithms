@@ -9,7 +9,7 @@
 #ifndef HeapSort_h
 #define HeapSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 struct MaxHeap: public Array
 {

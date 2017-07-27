@@ -9,7 +9,7 @@
 #ifndef InsertionSort_h
 #define InsertionSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 // Time: Ø(n^2) - worst/average, Ø(n) - best
 // Space: Ø(1)

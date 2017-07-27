@@ -9,7 +9,7 @@
 #ifndef RadixSort_h
 #define RadixSort_h
 
-#include "Defines.h"
+#include "Array.h"
 #include "CountingSort.h" // Use it as a stable sub-sort
 
 // Prerequisites:

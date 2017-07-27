@@ -9,11 +9,11 @@
 #ifndef SelectionSort_h
 #define SelectionSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 // Time: Ø(n^2) - worst/average/best
 // Space: Ø(1)
-void selectionSort(Array & arr)
+void selectionSort(Array &arr)
 {
 	for (int i = 0; i < arr.size() - 1; i++)
 	{
@@ -48,6 +48,5 @@ void test_selectionSort()
 		std::cout << std::endl;
 	}
 }
-
 
 #endif /* SelectionSort_h */

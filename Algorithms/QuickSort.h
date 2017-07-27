@@ -9,7 +9,7 @@
 #ifndef QuickSort_h
 #define QuickSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 int partition(Array &arr, int leftIndex, int rightIndex);
 int randomPartition(Array &arr, int leftIndex, int rightIndex);

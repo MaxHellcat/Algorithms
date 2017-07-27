@@ -9,7 +9,7 @@
 #ifndef CountingSort_h
 #define CountingSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 // Note: When indexOfDigitToSortBy isn't -1, the counting sort is used as part of a radix sort, i.e.
 // sorts the input array by a specific digit.

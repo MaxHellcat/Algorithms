@@ -9,7 +9,7 @@
 #ifndef MergeSort_h
 #define MergeSort_h
 
-#include "Defines.h"
+#include "Array.h"
 
 void merge(Array &arr, int leftIndex, int midIndex, int rightIndex);
 
