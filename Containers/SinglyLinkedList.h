@@ -9,7 +9,8 @@
 #ifndef SinglyLinkedList_h
 #define SinglyLinkedList_h
 
-#include "iostream"
+#include "iostream" // For std::string
+#include "cassert"
 
 class SinglyLinkedList
 {
@@ -38,7 +39,7 @@ public:
 
 	void insert(Node *aNode, Node *atNode)
 	{
-//		assert(aNode);
+		assert(aNode);
 
 		if (empty() || atNode == head())
 		{
@@ -54,7 +55,7 @@ public:
 
 	void remove(Node *aNode)
 	{
-//		assert(aNode);
+		assert(aNode);
 
 		if (aNode == head())
 		{

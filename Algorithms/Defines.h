@@ -9,8 +9,7 @@
 #ifndef Defines_h
 #define Defines_h
 
-//#include "iostream"
-//#include "cstdlib" // For rand, srand
+#include "iostream" // For rand()
 
 int random(int min, int max)
 {

@@ -81,14 +81,14 @@ public:
 	int max() const
 	{
 		int max = INT_MIN;
-		
+
 		for (auto it = begin(); it < end(); it++)
 		{
 			if (*it > max) {
 				max = *it;
 			}
 		}
-		
+
 		return max;
 	}
 

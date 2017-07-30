@@ -9,10 +9,7 @@
 #include "iostream" // For time()
 
 //#include "Sorting.h"
-
 #include "Containers.h"
-
-#include "Defines.h"
 
 int main(int argc, const char * argv[])
 {
