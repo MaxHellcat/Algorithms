@@ -20,6 +20,14 @@ public:
 	{
 	}
 
+	Array(size_t size, T defaultValue) : _pointer(new T[size]), _size(size)
+	{
+		for (auto &val : *this)
+		{
+			val = defaultValue;
+		}
+	}
+
 	Array(std::initializer_list<T> list) : _pointer(new T[list.size()]), _size(list.size())
 	{
 		int i = 0;

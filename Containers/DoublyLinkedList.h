@@ -9,20 +9,21 @@
 #ifndef DoublyLinkedList_h
 #define DoublyLinkedList_h
 
+template<typename T>
 class DoublyLinkedList
 {
 public:
 	struct Node
 	{
-		Node(int aKey) : key(aKey) {}
+		Node(T aKey) : key(aKey) {}
 
 		Node *next = nullptr, *prev = nullptr;
-		int key;
+		T key;
 	};
 
 public:
 	// Core methods
-	Node *search(int aKey) const
+	Node *search(T aKey) const
 	{
 		auto node = head();
 
@@ -124,19 +125,19 @@ void test_DoublyLinkedList()
 {
 	const int kNumberOfElements = 10;
 
-	DoublyLinkedList list;
+	DoublyLinkedList<int> list;
 
 	for (int i = 0; i < kNumberOfElements; i++)
 	{
-		list.insert(new DoublyLinkedList::Node(i), nullptr);
-		list.insert(new DoublyLinkedList::Node(kNumberOfElements + i), list.head());
+		list.insert(new DoublyLinkedList<int>::Node(i), nullptr);
+		list.insert(new DoublyLinkedList<int>::Node(kNumberOfElements + i), list.head());
 	}
 	std::cout << list.description() << std::endl << std::endl;
 
 	auto node = list.search(12);
 	std::cout << "Searched element " << node << ", key " << node->key << std::endl << std::endl;
 
-	list.insert(new DoublyLinkedList::Node(-49), node);
+	list.insert(new DoublyLinkedList<int>::Node(-49), node);
 	std::cout << list.description() << std::endl << std::endl;
 
 	list.remove(node);

@@ -10,6 +10,7 @@
 #define InsertionSort_h
 
 #include "Array.h"
+#include "DoublyLinkedList.h"
 
 // Time: Ø(n^2) - worst/average, Ø(n) - best
 // Space: Ø(1)
@@ -35,6 +36,53 @@ void insertionSort(Array<int> &arr)
 	}
 }
 
+// TODO: Add description
+template<typename T>
+void insertionSort(DoublyLinkedList<T> &list)
+{
+	auto node = list.head()->next;
+
+	while (node)
+	{
+		const auto key = node->key;
+
+		auto innerNode = node->prev;
+
+		while (innerNode && innerNode->key > key)
+		{
+			innerNode->next->key = innerNode->key;
+			innerNode = innerNode->prev;
+		}
+
+		if (innerNode != node->prev)
+		{
+			if (!innerNode)
+			{
+				list.head()->key = key;
+			}
+			else
+			{
+				innerNode->next->key = key;
+			}
+		}
+
+		node = node->next;
+	}
+}
+
+void test_insertionSortOnDLL()
+{
+	DoublyLinkedList<int> list;
+	for (int i=0; i < 10; i++)
+	{
+		list.insert(new DoublyLinkedList<int>::Node(10 - i), nullptr);
+	}
+	std::cout << list.description() << std::endl;
+
+	insertionSort(list);
+	std::cout << list.description() << std::endl;
+}
+
 void test_insertionSort()
 {
 	for (int i = 2; i < 10; i++)
@@ -49,6 +97,8 @@ void test_insertionSort()
 
 		std::cout << std::endl;
 	}
+
+	test_insertionSortOnDLL();
 }
 
 #endif /* InsertionSort_h */

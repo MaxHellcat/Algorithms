@@ -19,12 +19,7 @@ int main(int argc, const char * argv[])
 //	test_SinglyLinkedList();
 //	test_DoublyLinkedList();
 
-//	Array<float> arr = {0.45, 0.62, 0.56};
-//	print(arr);
-	
-	test_mergeSort();
-	
-
+	test_bucketSort();
 
 
 	return 0;
