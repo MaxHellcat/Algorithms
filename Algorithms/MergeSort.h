@@ -11,12 +11,12 @@
 
 #include "Array.h"
 
-void merge(Array &arr, int leftIndex, int midIndex, int rightIndex);
+void merge(Array<int> &arr, int leftIndex, int midIndex, int rightIndex);
 
 // Time: Ø(n*lgn) - worst/average/best
 // Space: Ø(n)
 // Stable: true
-void mergeSort(Array &arr, int leftIndex, int rightIndex)
+void mergeSort(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)
 	{
@@ -29,10 +29,10 @@ void mergeSort(Array &arr, int leftIndex, int rightIndex)
 	}
 }
 
-void merge(Array &arr, int leftIndex, int midIndex, int rightIndex)
+void merge(Array<int> &arr, int leftIndex, int midIndex, int rightIndex)
 {
 	const int kLeftArraySize = midIndex - leftIndex + 1;
-	Array leftArray(kLeftArraySize);
+	Array<int> leftArray(kLeftArraySize);
 
 	for (int i = 0; i < kLeftArraySize; i++)
 	{
@@ -40,7 +40,7 @@ void merge(Array &arr, int leftIndex, int midIndex, int rightIndex)
 	}
 
 	const int kRightArraySize = rightIndex - midIndex;
-	Array rightArray(kRightArraySize);
+	Array<int> rightArray(kRightArraySize);
 
 	for (int i = 0; i < kRightArraySize; i++)
 	{
@@ -92,7 +92,8 @@ void test_mergeSort()
 {
 	for (int i = 2; i < 10; i++)
 	{
-		Array arr(i);
+		Array<int> arr(i);
+		for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
 		arr.permute();
 
 		print(arr);

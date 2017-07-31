@@ -11,7 +11,7 @@
 
 #include "Array.h"
 
-struct MaxHeap: public Array
+struct MaxHeap: public Array<int>
 {
 	MaxHeap(size_t size) : Array(size) {}
 	MaxHeap(std::initializer_list<int> list) : Array(list) {}
@@ -84,6 +84,7 @@ void test_heapSort()
 	for (int i = 2; i < 10; i++)
 	{
 		MaxHeap arr(i);
+		for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
 		arr.permute();
 
 		print(arr);

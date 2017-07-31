@@ -10,20 +10,17 @@
 #define Array_h
 
 #include "Defines.h"
+#include "cassert"
 
+template<typename T>
 class Array
 {
 public:
-	Array(size_t size) : _pointer(new int[size]), _size(size)
+	Array(size_t size) : _pointer(new T[size]), _size(size)
 	{
-		// TODO: Not sure this is with POLA
-		for (int i = 0; i < size; i++)
-		{
-			_pointer[i] = i + 1;
-		}
 	}
 
-	Array(std::initializer_list<int> list) : _pointer(new int[list.size()]), _size(list.size())
+	Array(std::initializer_list<T> list) : _pointer(new T[list.size()]), _size(list.size())
 	{
 		int i = 0;
 		for (auto val : list)
@@ -39,8 +36,8 @@ public:
 
 	size_t size() const { return _size; }
 
-	int &operator[](size_t index) { return _pointer[index]; }
-	const int &operator[](size_t index) const { return _pointer[index]; }
+	T &operator[](size_t index) { return _pointer[index]; }
+	const T &operator[](size_t index) const { return _pointer[index]; }
 
 	const Array &operator=(const Array &rhs)
 	{
@@ -48,7 +45,7 @@ public:
 		{
 			delete [] _pointer;
 			
-			_pointer = new int[rhs.size()];
+			_pointer = new T[rhs.size()];
 			_size = rhs.size();
 		}
 
@@ -60,14 +57,9 @@ public:
 		return *this;
 	}
 
-	bool isSorted(int leftIndex = 0, int rightIndex = INT_MIN) const
+	bool sorted() const
 	{
-		if (rightIndex == INT_MIN)
-		{
-			rightIndex = (int)size() - 1;
-		}
-
-		for (int i = leftIndex; i < rightIndex; i++)
+		for (int i = 0; i < size()-1; i++)
 		{
 			if (_pointer[i] > _pointer[i+1])
 			{
@@ -78,11 +70,13 @@ public:
 		return true;
 	}
 
-	int max() const
+	T max() const
 	{
-		int max = INT_MIN;
+		assert(size() > 0);
 
-		for (auto it = begin(); it < end(); it++)
+		auto max = operator[](0);
+
+		for (auto it = begin() + 1; it < end(); it++)
 		{
 			if (*it > max) {
 				max = *it;
@@ -102,31 +96,27 @@ public:
 	}
 
 	// To support ranged for loop
-	int *begin() const { return _pointer; }
-	int *end() const { return _pointer + _size; }
+	T *begin() const { return _pointer; }
+	T *end() const { return _pointer + _size; }
 
 protected:
-	int *_pointer;
+	T *_pointer;
 
 private:
 	size_t _size;
 };
 
-void print(Array &arr, int leftIndex = 0, int rightIndex = INT_MIN)
+template<typename T>
+void print(Array<T> &arr)
 {
-	if (rightIndex == INT_MIN)
-	{
-		rightIndex = (int)arr.size() - 1;
-	}
-	
 	std::cout << "[";
-	
-	for (int i = leftIndex; i < rightIndex + 1; i++)
+
+	for (int i = 0; i < arr.size(); i++)
 	{
-		std::cout << const_cast<Array*>(&arr)->operator[](i) << ((i < rightIndex) ? ", " : "");
+		std::cout << arr[i] << ((i < arr.size()-1) ? ", " : "");
 	}
-	
-	std::cout << "] (size " << rightIndex - leftIndex + 1 << ", " << (arr.isSorted(leftIndex, rightIndex)?"sorted":"unsorted") << ")\n";
+
+	std::cout << "] (size " << arr.size() << ", " << (arr.sorted()?"sorted":"unsorted") << ")\n";
 }
 
 #endif /* Array_h */

@@ -16,9 +16,10 @@ int random(int min, int max)
 	return min + (rand() % (max - min + 1));
 }
 
-void swap(int &val1, int &val2)
+template<typename T>
+void swap(T &val1, T &val2)
 {
-	const int tmpVal = val1;
+	const T tmpVal = val1;
 	val1 = val2;
 	val2 = tmpVal;
 }

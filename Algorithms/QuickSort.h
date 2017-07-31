@@ -11,14 +11,14 @@
 
 #include "Array.h"
 
-int partition(Array &arr, int leftIndex, int rightIndex);
-int randomPartition(Array &arr, int leftIndex, int rightIndex);
-int hoarePartition(Array &arr, int leftIndex, int rightIndex);
+int partition(Array<int> &arr, int leftIndex, int rightIndex);
+int randomPartition(Array<int> &arr, int leftIndex, int rightIndex);
+int hoarePartition(Array<int> &arr, int leftIndex, int rightIndex);
 
 // Time: Ø(n*lgn) - expected/best, Ø(n^2) - worst
 // Space: O(1) (maybe O(lgn) for expected/best and O(n) for the worst?)
 // Stable: false (classic implementation with Lomuto/Hoare partitions as provided here)
-void quickSort(Array &arr, int leftIndex, int rightIndex)
+void quickSort(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)
 	{
@@ -34,7 +34,7 @@ void quickSort(Array &arr, int leftIndex, int rightIndex)
 	}
 }
 
-int partition(Array &arr, int leftIndex, int rightIndex)
+int partition(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	const int x = arr[rightIndex];
 
@@ -55,7 +55,7 @@ int partition(Array &arr, int leftIndex, int rightIndex)
 	return i + 1;
 }
 
-int randomPartition(Array &arr, int leftIndex, int rightIndex)
+int randomPartition(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	const int pivotIndex = random(leftIndex, rightIndex);
 
@@ -64,7 +64,7 @@ int randomPartition(Array &arr, int leftIndex, int rightIndex)
 	return partition(arr, leftIndex, rightIndex);
 }
 
-int hoarePartition(Array &arr, int leftIndex, int rightIndex)
+int hoarePartition(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	const int x = arr[leftIndex];
 
@@ -100,7 +100,8 @@ void test_quickSort()
 {
 	for (int i = 2; i < 10; i++)
 	{
-		Array arr(i);
+		Array<int> arr(i);
+		for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
 		arr.permute();
 
 		print(arr);

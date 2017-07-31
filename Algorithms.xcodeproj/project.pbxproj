@@ -55,10 +55,10 @@
 		AE0DAA451F2A0B6A00EE5927 /* Containers */ = {
 			isa = PBXGroup;
 			children = (
+				AE0DAA491F2A9B4500EE5927 /* Containers.h */,
 				AE0DAA461F2A0B6A00EE5927 /* Array.h */,
 				AE0DAA471F2A149B00EE5927 /* SinglyLinkedList.h */,
 				AE0DAA481F2A9AE600EE5927 /* DoublyLinkedList.h */,
-				AE0DAA491F2A9B4500EE5927 /* Containers.h */,
 			);
 			path = Containers;
 			sourceTree = "<group>";

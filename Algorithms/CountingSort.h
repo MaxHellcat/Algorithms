@@ -24,10 +24,10 @@
 // Time: Ø(n + k) (or Ø(n), provided k = O(n), which is a typical case as Cormen claims)
 // Space: Ø(n + k)
 // Stable: true
-void countingSort(Array &arr, int k, int indexOfDigitToSortBy = -1)
+void countingSort(Array<int> &arr, int k, int indexOfDigitToSortBy = -1)
 {
-	Array sortedArray(arr.size());
-	Array tmpArray(k + 1);
+	Array<int> sortedArray(arr.size());
+	Array<int> tmpArray(k + 1);
 
 	for (auto &val : tmpArray)
 	{
@@ -69,7 +69,7 @@ void countingSort(Array &arr, int k, int indexOfDigitToSortBy = -1)
 void test_countingSort()
 {
 	{
-		Array arr = {1, 35, 135, 25, 3};
+		Array<int> arr = {1, 35, 135, 25, 3};
 
 		print(arr);
 		countingSort(arr, arr.max());
@@ -77,7 +77,7 @@ void test_countingSort()
 	}
 
 	{
-		Array arr = {5, 3, 5, 6, 1, 4, 3, 3, 5, 1};
+		Array<int> arr = {5, 3, 5, 6, 1, 4, 3, 3, 5, 1};
 
 		print(arr);
 		countingSort(arr, arr.max());
@@ -85,7 +85,7 @@ void test_countingSort()
 	}
 
 	{
-		Array arr(25);
+		Array<int> arr(25);
 		arr.permute();
 
 		print(arr);

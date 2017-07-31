@@ -13,7 +13,7 @@
 
 // Time: Ø(n^2) - worst/average/best
 // Space: Ø(1)
-void selectionSort(Array &arr)
+void selectionSort(Array<int> &arr)
 {
 	for (int i = 0; i < arr.size() - 1; i++)
 	{
@@ -38,7 +38,8 @@ void test_selectionSort()
 {
 	for (int i = 2; i < 10; i++)
 	{
-		Array arr(i);
+		Array<int> arr(i);
+		for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
 		arr.permute();
 
 		print(arr);

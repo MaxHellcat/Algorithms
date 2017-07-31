@@ -18,7 +18,7 @@
 
 // Time: Ø(d(n+k)) (or Ø((b/r)(n+2^r)) = Ø(n), for r (bits per digit) <= lgn, see 8.3 Radix sort in CRLS)
 // Space: Ø(n + k)
-void radixSort(Array &arr, int d)
+void radixSort(Array<int> &arr, int d)
 {
 	const int kMaxDigitValue = 9; // Assuming each digit is a decimal number
 
@@ -33,8 +33,8 @@ void radixSort(Array &arr, int d)
 
 void test_radixSort()
 {
-//	Array arr = {329, 457, 657, 839, 436, 720, 355};
-	Array arr(25);
+//	Array<int> arr = {329, 457, 657, 839, 436, 720, 355};
+	Array<int> arr(25);
 	for (auto &val : arr)
 	{
 		val = random(100, 999);
