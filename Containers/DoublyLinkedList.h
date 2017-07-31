@@ -9,6 +9,9 @@
 #ifndef DoublyLinkedList_h
 #define DoublyLinkedList_h
 
+#include "iostream" // For std::string
+#include "cassert"
+
 template<typename T>
 class DoublyLinkedList
 {
@@ -23,6 +26,8 @@ public:
 
 public:
 	// Core methods
+
+	// TODO: Duplicates SinglyLinkedList::search()
 	Node *search(T aKey) const
 	{
 		auto node = head();
@@ -37,7 +42,7 @@ public:
 
 	void insert(Node *aNode, Node *atNode)
 	{
-//		assert(aNode);
+		assert(aNode);
 
 		if (empty() || atNode == head())
 		{
@@ -73,7 +78,7 @@ public:
 
 	void remove(Node *aNode)
 	{
-//		assert(aNode);
+		assert(aNode);
 
 		if (aNode == head())
 		{
@@ -84,7 +89,7 @@ public:
 			aNode->prev->next = aNode->next;
 		}
 
-		if (aNode->next) // Removing not tail
+		if (aNode->next)
 		{
 			aNode->next->prev = aNode->prev;
 		}
@@ -100,14 +105,14 @@ public:
 	std::string description() const
 	{
 		std::string desc = "(";
-		
+
 		auto * node = head();
-		
+
 		while (node)
 		{
 			desc += std::to_string(node->key);
 			desc += (node->next ? ", " : "");
-			
+
 			node = node->next;
 		}
 
@@ -115,7 +120,6 @@ public:
 
 		return desc;
 	}
-
 
 private:
 	Node *_head = nullptr;
