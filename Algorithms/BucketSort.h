@@ -18,16 +18,16 @@ void bucketSort(Array<float> &arr)
 {
 	Array<DoublyLinkedList<float> *> tmpArr(arr.size(), nullptr);
 
-	for (int i=0; i<arr.size(); i++)
+	for (auto val : arr)
 	{
-		const int index = arr.size() * arr[i];
+		const int index = arr.size() * val;
 
 		if (!tmpArr[index])
 		{
 			tmpArr[index] = new DoublyLinkedList<float>;
 		}
 
-		auto node = new DoublyLinkedList<float>::Node(arr[i]);
+		const auto node = new DoublyLinkedList<float>::Node(val);
 		tmpArr[index]->insert(node, nullptr);
 	}
 
@@ -37,20 +37,20 @@ void bucketSort(Array<float> &arr)
 		std::cout << i << ": " << (tmpArr[i] ? tmpArr[i]->description() : "nil") << std::endl;
 	}
 
-	for (int i=0; i<arr.size(); i++)
+	for (auto val : tmpArr)
 	{
-		if (tmpArr[i])
+		if (val)
 		{
-			insertionSort(*(tmpArr[i]));
+			insertionSort(*val);
 		}
 	}
 
 	int index = 0;
-	for (int tmpArrIndex = 0; tmpArrIndex < arr.size(); tmpArrIndex++)
+	for (auto val : tmpArr)
 	{
-		if (tmpArr[tmpArrIndex])
+		if (val)
 		{
-			auto node = tmpArr[tmpArrIndex]->head();
+			auto node = val->head();
 
 			while (node)
 			{
@@ -60,6 +60,12 @@ void bucketSort(Array<float> &arr)
 				index++;
 			}
 		}
+	}
+
+	// Cleanup tmpArray (TODO: Switch to smart pointers)
+	for (auto val : tmpArr)
+	{
+		delete val;
 	}
 }
 

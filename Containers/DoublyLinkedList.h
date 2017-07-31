@@ -25,6 +25,15 @@ public:
 	};
 
 public:
+	// TODO: Duplicates SinglyLinkedList::~SinglyLinkedList()
+	~DoublyLinkedList()
+	{
+		while (head())
+		{
+			remove(head());
+		}
+	}
+
 	// Core methods
 
 	// TODO: Duplicates SinglyLinkedList::search()

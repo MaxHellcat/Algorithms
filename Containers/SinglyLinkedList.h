@@ -24,6 +24,14 @@ public:
 	};
 
 public:
+	~SinglyLinkedList()
+	{
+		while (head())
+		{
+			remove(head());
+		}
+	}
+
 // Core methods
 	Node *search(int aKey) const
 	{
