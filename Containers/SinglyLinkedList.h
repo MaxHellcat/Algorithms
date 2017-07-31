@@ -37,6 +37,7 @@ public:
 		return node;
 	}
 
+	// Pushes back, if atNode is nil
 	void insert(Node *aNode, Node *atNode)
 	{
 		assert(aNode);
@@ -48,8 +49,11 @@ public:
 		}
 		else
 		{
+			auto prevNode = previous(atNode);
+			assert(prevNode);
+
 			aNode->next = atNode;
-			previous(atNode)->next = aNode;
+			prevNode->next = aNode;
 		}
 	}
 
@@ -63,7 +67,10 @@ public:
 		}
 		else
 		{
-			previous(aNode)->next = aNode->next;
+			auto prevNode = previous(aNode);
+			assert(prevNode);
+
+			prevNode->next = aNode->next;
 		}
 
 		delete aNode;
@@ -83,6 +90,7 @@ public:
 		insert(aNode, nullptr);
 	}
 
+	// TODO: Must go away after iterator is introduced.
 	std::string description() const
 	{
 		std::string desc = "(";
@@ -103,6 +111,7 @@ public:
 	}
 
 private:
+	// Returns tail, if ofNode is nil
 	Node *previous(Node *ofNode) const
 	{
 		auto prevNode = head();
