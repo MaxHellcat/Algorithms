@@ -9,8 +9,6 @@
 #ifndef HashTable_h
 #define HashTable_h
 
-#include "DoublyLinkedList.h"
-
 using namespace std; // For brief logging
 
 // TODO:
