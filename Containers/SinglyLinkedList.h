@@ -122,14 +122,14 @@ private:
 	// Returns tail, if ofNode is nil
 	Node *previous(Node *ofNode) const
 	{
-		auto prevNode = head();
+		auto node = head();
 
-		while (prevNode && prevNode->next != ofNode)
+		while (node && node->next != ofNode)
 		{
-			prevNode = prevNode->next;
+			node = node->next;
 		}
 
-		return prevNode;
+		return node;
 	}
 
 private:

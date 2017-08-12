@@ -34,7 +34,7 @@ public:
 		}
 	}
 
-	// Core methods
+// Core methods
 
 	// TODO: Duplicates SinglyLinkedList::search()
 	Node *search(T aKey) const
@@ -107,8 +107,33 @@ public:
 	}
 
 // Extra methods
+// TODO: All duplicate the ones in SinglyLinkedList
 	Node *head() const { return _head; }
 	bool empty() const { return _head == nullptr; }
+
+	void pushFront(Node *aNode)
+	{
+		insert(aNode, head());
+	}
+
+	void pushBack(Node *aNode)
+	{
+		insert(aNode, nullptr);
+	}
+
+	size_t size() const
+	{
+		auto node = head();
+
+		size_t count = 0;
+		while (node)
+		{
+			node = node->next;
+			count++;
+		}
+
+		return count;
+	}
 
 // TODO: Duplicates SinglyLinkedList::description()
 	std::string description() const

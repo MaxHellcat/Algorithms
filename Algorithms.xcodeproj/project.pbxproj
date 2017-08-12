@@ -36,6 +36,7 @@
 		AEBD495F1E8ED1480041BC3B /* Sorting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sorting.h; sourceTree = "<group>"; };
 		AEBD49601E8ED32F0041BC3B /* HeapSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HeapSort.h; sourceTree = "<group>"; };
 		AED96DFE1E97B60D0074202A /* QuickSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickSort.h; sourceTree = "<group>"; };
+		AEEA9CAD1F3DE4CB005C3ED8 /* HashTable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HashTable.h; sourceTree = "<group>"; };
 		AEF12C2C1E8A82DD0078525D /* Algorithms */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Algorithms; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEF12C2F1E8A82DD0078525D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		AEF12C361E8A85B20078525D /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 				AE0DAA461F2A0B6A00EE5927 /* Array.h */,
 				AE0DAA471F2A149B00EE5927 /* SinglyLinkedList.h */,
 				AE0DAA481F2A9AE600EE5927 /* DoublyLinkedList.h */,
+				AEEA9CAD1F3DE4CB005C3ED8 /* HashTable.h */,
 			);
 			path = Containers;
 			sourceTree = "<group>";

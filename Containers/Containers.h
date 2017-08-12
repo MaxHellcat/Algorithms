@@ -12,5 +12,6 @@
 #include "Array.h"
 #include "SinglyLinkedList.h"
 #include "DoublyLinkedList.h"
+#include "HashTable.h"
 
 #endif /* Containers_h */

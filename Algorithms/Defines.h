@@ -24,7 +24,7 @@ void swap(T &val1, T &val2)
 	val2 = tmpVal;
 }
 
-// TODO: This assumes that val is decimal
+// TODO: This assumes the val is decimal
 int numberOfDigits(int val)
 {
 	int count = 0;
@@ -34,7 +34,7 @@ int numberOfDigits(int val)
 	return count;
 }
 
-// TODO: This assumes that val is decimal
+// TODO: This assumes the val is decimal
 int digitAtIndex(int val, int index)
 {
 	int i = numberOfDigits(val) - 1;
