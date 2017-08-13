@@ -16,9 +16,7 @@ template<typename T>
 class Array
 {
 public:
-	Array(size_t size) : _pointer(new T[size]), _size(size)
-	{
-	}
+	Array(size_t size) : _pointer(new T[size]), _size(size) {}
 
 	Array(size_t size, T defaultValue) : _pointer(new T[size]), _size(size)
 	{
@@ -44,8 +42,8 @@ public:
 
 	size_t size() const { return _size; }
 
-	T &operator[](size_t index) { return _pointer[index]; }
-	const T &operator[](size_t index) const { return _pointer[index]; }
+	T &operator[](size_t index) { assert(index < size()); return _pointer[index]; }
+	const T &operator[](size_t index) const { assert(index < size()); return _pointer[index]; }
 
 	const Array &operator=(const Array &rhs)
 	{
