@@ -111,15 +111,8 @@ public:
 	Node *head() const { return _head; }
 	bool empty() const { return _head == nullptr; }
 
-	void pushFront(Node *aNode)
-	{
-		insert(aNode, head());
-	}
-
-	void pushBack(Node *aNode)
-	{
-		insert(aNode, nullptr);
-	}
+	void pushFront(Node *aNode) { insert(aNode, head()); }
+	void pushBack(Node *aNode) { insert(aNode, nullptr); }
 
 	size_t size() const
 	{
@@ -159,6 +152,7 @@ private:
 	Node *_head = nullptr;
 };
 
+// TODO: Rewrite to carefully test all functionality
 void test_DoublyLinkedList()
 {
 	const int kNumberOfElements = 10;

@@ -88,15 +88,8 @@ public:
 	Node *head() const { return _head; }
 	bool empty() const { return _head == nullptr; }
 
-	void pushFront(Node *aNode)
-	{
-		insert(aNode, head());
-	}
-
-	void pushBack(Node *aNode)
-	{
-		insert(aNode, nullptr);
-	}
+	void pushFront(Node *aNode) { insert(aNode, head()); }
+	void pushBack(Node *aNode) { insert(aNode, nullptr); }
 
 	// TODO: Must go away after iterator is introduced.
 	std::string description() const
@@ -136,6 +129,7 @@ private:
 	Node *_head = nullptr;
 };
 
+// TODO: Rewrite to carefully test all functionality
 void test_SinglyLinkedList()
 {
 	const int kNumberOfElements = 10;
