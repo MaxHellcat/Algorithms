@@ -17,7 +17,7 @@ using namespace std; // For brief logging
 // c) Wider range of hash functions
 
 // A simple hash table implementation using chaining for resolving collisions.
-// All three dictionary operations take constant time if n = O(m), as a = O(m) / m = O(1).
+// All three dictionary operations take constant time on average if n = O(m), as a = O(m) / m = O(1).
 class HashTable
 {
 public:
