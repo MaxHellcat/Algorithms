@@ -34,7 +34,7 @@ public:
 		}
 	}
 
-// Core methods
+// Core dictionary methods
 
 	// TODO: Duplicates SinglyLinkedList::search()
 	Node *search(T aKey) const

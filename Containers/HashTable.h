@@ -49,8 +49,9 @@ public:
 		}
 	}
 
-// Core methods
-	// Time: Ø(1 + a) - average, Ø(n) - worst
+// Core dictionary methods
+
+	// Time: Ø(1 + loadFactor) - average, Ø(n) - worst
 	Element *search(int aKey) const
 	{
 		auto element = _arr[hash(aKey)];
@@ -81,6 +82,8 @@ public:
 
 			_arr[slotIndex] = element;
 		}
+
+		_size++;
 	}
 
 	// Time: Ø(1)
@@ -103,9 +106,18 @@ public:
 		}
 
 		delete element;
+
+		_size--;
 	}
 
 // Extra methods
+	size_t size() const { return _size; }
+
+	float loadFactor() const
+	{
+		return static_cast<float>(_size) / kNumberOfSlots;
+	}
+
 	void dump() const
 	{
 		cout << "============ Hash table =============" << endl;
@@ -134,6 +146,8 @@ public:
 			cout << ")" << endl;
 		}
 
+		cout << "Load factor: " << loadFactor() << endl;
+
 		cout << "=====================================" << endl;
 	}
 
@@ -147,12 +161,14 @@ private:
 	static const int kNumberOfSlots = 17;
 
 	Element *_arr[kNumberOfSlots];
+
+	size_t _size = 0;
 };
 
 void test_HashTable()
 {
 	HashTable t;
-	
+
 	for (int i = 0; i < 17*3; i++)
 	{
 //		const int key = random(1, 999);

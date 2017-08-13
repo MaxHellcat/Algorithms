@@ -32,7 +32,7 @@ public:
 		}
 	}
 
-// Core methods
+// Core dictionary methods
 	Node *search(int aKey) const
 	{
 		auto node = head();

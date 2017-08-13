@@ -52,7 +52,7 @@ public:
 		if (size() != rhs.size())
 		{
 			delete [] _pointer;
-			
+
 			_pointer = new T[rhs.size()];
 			_size = rhs.size();
 		}
