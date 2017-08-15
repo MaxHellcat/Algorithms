@@ -18,16 +18,23 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 // TODO: Find a decent place for this
-	srand( (unsigned)time(nullptr) );
+//	srand( (unsigned)time(nullptr) );
 
-	test_HashTable();
+//	test_HashTable();
 
-	HashTable t;
+	HashTable t(new HashTable::OpenAddressing);
 
-	for (int i = 0; i < 17; i++)
+	const int kNumOfSlots = 17;
+
+	Array<int> arr(kNumOfSlots);
+	for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
+	arr.permute();
+
+	for (int i = 0; i < kNumOfSlots; i++)
 	{
-		const int key = random(1, 999);
+		const int key = random(1, 99);
 //		const int key = i;
+//		const int key = arr[i];
 
 		auto element = new HashTable::Element(key);
 
@@ -36,7 +43,19 @@ int main(int argc, const char * argv[])
 
 	t.dump();
 
-	cout << "Load factor: " << t.loadFactor() << endl;
+	const int key = 43;
+	auto elem = t.search(key);
+
+	t.remove(elem);
+	t.dump();
+	
+	elem = t.search(39);
+	t.remove(elem);
+	t.dump();
+	
+	auto element = new HashTable::Element(9);
+	t.insert(element);
+	t.dump();
 	
 
 //	unordered_set<int> set;
