@@ -54,8 +54,8 @@ public:
 		}
 	};
 
-	// For chaining, all three dictionary operations take constant time on average
-	// if n = O(m), as a = O(m) / m = O(1).
+	// For chaining, all three dictionary operations take constant time on average if
+	// n = O(m), as a = O(m) / m = O(1).
 	class Chaining : public CollisionResolutionStrategy
 	{
 	public:
@@ -153,7 +153,7 @@ public:
 
 			for (int i=0; i<kNumberOfSlots; i++)
 			{
-				const auto slotIndex = linearProbing(aKey, i);
+				const auto slotIndex = quadraticProbing(aKey, i);
 
 				cout << slotIndex;
 
@@ -187,7 +187,7 @@ public:
 
 			for (int i=0; i<kNumberOfSlots; i++)
 			{
-				const auto slotIndex = linearProbing(element->key, i);
+				const auto slotIndex = quadraticProbing(element->key, i);
 
 				cout << slotIndex;
 
@@ -214,7 +214,7 @@ public:
 
 			for (int i=0; i<kNumberOfSlots; i++)
 			{
-				const auto slotIndex = linearProbing(element->key, i);
+				const auto slotIndex = quadraticProbing(element->key, i);
 
 				cout << slotIndex;
 
@@ -270,6 +270,14 @@ public:
 		size_t linearProbing(int aKey, int i) const
 		{
 			return (hash(aKey) + i) % kNumberOfSlots;
+		}
+
+		// TODO: Test this
+		size_t quadraticProbing(int aKey, int i) const
+		{
+			const int c1 = 1, c2 = 3;
+
+			return (hash(aKey) + c1*i + c2*i*i) % kNumberOfSlots;
 		}
 	};
 
