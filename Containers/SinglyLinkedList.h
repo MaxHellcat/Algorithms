@@ -49,10 +49,18 @@ public:
 	void insert(Node *aNode, Node *atNode)
 	{
 		assert(aNode);
+		assert(aNode->next == nullptr);
 
-		if (empty() || atNode == head())
+		// TODO: This unrolled if-else chain isn't ideal
+		if (_head == nullptr)
 		{
-			aNode->next = _head; // TODO: See if it can be merged with similar below
+			assert(atNode == nullptr);
+
+			_head = aNode;
+		}
+		else if (atNode == _head)
+		{
+			aNode->next = _head;
 			_head = aNode;
 		}
 		else
@@ -60,7 +68,12 @@ public:
 			auto prevNode = previous(atNode);
 			assert(prevNode);
 
-			aNode->next = atNode;
+			// Only update node's next if we're adding in the middle of a list.
+			if (atNode)
+			{
+				aNode->next = atNode;
+			}
+
 			prevNode->next = aNode;
 		}
 	}
@@ -69,7 +82,7 @@ public:
 	{
 		assert(aNode);
 
-		if (aNode == head())
+		if (aNode == _head)
 		{
 			_head = _head->next;
 		}

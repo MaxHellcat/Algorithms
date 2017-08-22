@@ -52,36 +52,49 @@ public:
 	void insert(Node *aNode, Node *atNode)
 	{
 		assert(aNode);
+		assert(aNode->next == nullptr && aNode->prev == nullptr);
 
-		if (empty() || atNode == head())
+		// TODO: This unrolled if-else chain isn't ideal
+		if (_head == nullptr)
 		{
-			aNode->next = _head;
-
-			if (!empty())
-			{
-				_head->prev = aNode;
-			}
+			assert(atNode == nullptr);
 
 			_head = aNode;
+		
 		}
-		else if (!atNode)
+		else if (atNode == _head)
 		{
-			auto tail = head();
-
-			while (tail->next)
-			{
-				tail = tail->next;
-			}
-
-			tail->next = aNode;
-			aNode->prev = tail;
+			aNode->next = _head;
+			_head->prev = aNode;
+			_head = aNode;
 		}
 		else
 		{
-			atNode->prev->next = aNode;
-			aNode->prev = atNode->prev;
-			aNode->next = atNode;
-			atNode->prev = aNode;
+			Node *tail = nullptr;
+
+			// If we're appending, we need to locate tail first
+			if (!atNode)
+			{
+				tail = _head;
+
+				while (tail->next)
+				{
+					tail = tail->next;
+				}
+			}
+
+			if (atNode)
+			{
+				aNode->prev = atNode->prev;
+				aNode->next = atNode;
+				atNode->prev->next = aNode;
+				atNode->prev = aNode;
+			}
+			else
+			{
+				aNode->prev = tail;
+				tail->next = aNode;
+			}
 		}
 	}
 
@@ -89,9 +102,9 @@ public:
 	{
 		assert(aNode);
 
-		if (aNode == head())
+		if (aNode == _head)
 		{
-			_head = aNode->next;
+			_head = _head->next;
 		}
 		else
 		{

@@ -21,7 +21,7 @@ int main(int argc, const char * argv[])
 //	srand( (unsigned)time(nullptr) );
 
 //	test_HashTable();
-
+	
 	HashTable t(new HashTable::OpenAddressing);
 
 	const int kNumOfSlots = 17;
