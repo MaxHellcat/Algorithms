@@ -28,7 +28,7 @@ public:
 		Element *next = nullptr, *prev = nullptr;
 		int key;
 	};
-	
+
 	void freeAll()
 	{
 		_collisionStrategy->freeArray(_arr);
@@ -40,11 +40,11 @@ public:
 	public:
 		virtual ~CollisionResolutionStrategy() {}
 
-		virtual Element *search(int aKey, Element *_arr[]) const = 0;
-		virtual void insert(Element *element, Element *_arr[]) = 0;
-		virtual void remove(Element *element, Element *_arr[]) = 0;
+		virtual Element *search(int aKey, Element *arr[]) const = 0;
+		virtual void insert(Element *element, Element *arr[]) = 0;
+		virtual void remove(Element *element, Element *arr[]) = 0;
 
-		virtual void freeArray(Element *_arr[]) = 0;
+		virtual void freeArray(Element *arr[]) = 0;
 		virtual void dumpSlot(Element *element) = 0;
 
 	protected:
@@ -60,9 +60,9 @@ public:
 	{
 	public:
 		// TODO: Add detailed logging for dictionary methods
-		virtual Element *search(int aKey, Element *_arr[]) const override
+		virtual Element *search(int aKey, Element *arr[]) const override
 		{
-			auto element = _arr[hash(aKey)];
+			auto element = arr[hash(aKey)];
 
 			while (element && element->key != aKey)
 			{
@@ -72,24 +72,24 @@ public:
 			return element;
 		}
 
-		virtual void insert(Element *element, Element *_arr[]) override
+		virtual void insert(Element *element, Element *arr[]) override
 		{
 			const auto slotIndex = hash(element->key);
 
-			if (!_arr[slotIndex])
+			if (!arr[slotIndex])
 			{
-				_arr[slotIndex] = element;
+				arr[slotIndex] = element;
 			}
 			else
 			{
-				element->next = _arr[slotIndex];
-				_arr[slotIndex]->prev = element;
+				element->next = arr[slotIndex];
+				arr[slotIndex]->prev = element;
 
-				_arr[slotIndex] = element;
+				arr[slotIndex] = element;
 			}
 		}
 
-		virtual void remove(Element *element, Element *_arr[]) override
+		virtual void remove(Element *element, Element *arr[]) override
 		{
 			if (element->prev)
 			{
@@ -97,7 +97,7 @@ public:
 			}
 			else
 			{
-				_arr[hash(element->key)] = element->next;
+				arr[hash(element->key)] = element->next;
 			}
 
 			if (element->next)
@@ -144,10 +144,11 @@ public:
 	class OpenAddressing : public CollisionResolutionStrategy
 	{
 	public:
+		// Special value indicating that slot's element has been deleted
 		// TODO: Must be static
 		Element *const DELETED = reinterpret_cast<Element *const>(0xDEADBEAF);
 
-		virtual Element *search(int aKey, Element *_arr[]) const override
+		virtual Element *search(int aKey, Element *arr[]) const override
 		{
 			cout << "Search " << aKey << " in slot ";
 
@@ -157,20 +158,19 @@ public:
 
 				cout << slotIndex;
 
-				if (!_arr[slotIndex])
+				if (!arr[slotIndex])
 				{
 					cout << endl;
 
 					return nullptr;
 				}
 
-				// We skip slots marked DELETED
-				// Slots marked DELETED look valid, yet in fact nullptrs
-				if (_arr[slotIndex] != DELETED && _arr[slotIndex]->key == aKey)
+				// We skip slots marked DELETED (they look valid, yet in fact nullptrs)
+				if (arr[slotIndex] != DELETED && arr[slotIndex]->key == aKey)
 				{
 					cout << endl;
 
-					return _arr[slotIndex];
+					return arr[slotIndex];
 				}
 
 				cout << ", ";
@@ -181,7 +181,7 @@ public:
 			return nullptr;
 		}
 
-		virtual void insert(Element *element, Element *_arr[]) override
+		virtual void insert(Element *element, Element *arr[]) override
 		{
 			cout << "Insert " << element->key << " into slot ";
 
@@ -191,9 +191,9 @@ public:
 
 				cout << slotIndex;
 
-				if (!_arr[slotIndex] || _arr[slotIndex] == DELETED)
+				if (!arr[slotIndex] || arr[slotIndex] == DELETED)
 				{
-					_arr[slotIndex] = element;
+					arr[slotIndex] = element;
 
 					cout << endl;
 
@@ -208,7 +208,7 @@ public:
 			throw "hash table overflow";
 		}
 
-		virtual void remove(Element *element, Element *_arr[]) override
+		virtual void remove(Element *element, Element *arr[]) override
 		{
 			cout << "Remove " << element->key << " from slot ";
 
@@ -218,11 +218,11 @@ public:
 
 				cout << slotIndex;
 
-				if (_arr[slotIndex] == element)
+				if (arr[slotIndex] == element)
 				{
-					delete _arr[slotIndex];
+					delete arr[slotIndex];
 
-					_arr[slotIndex] = DELETED;
+					arr[slotIndex] = DELETED;
 
 					cout << endl;
 
@@ -275,7 +275,7 @@ public:
 		// TODO: Test this
 		size_t quadraticProbing(int aKey, int i) const
 		{
-			const int c1 = 1, c2 = 3;
+			const int c1 = 1, c2 = 3; // TODO: Wrong values cause probing sequences to not cover all slots.
 
 			return (hash(aKey) + c1*i + c2*i*i) % kNumberOfSlots;
 		}
