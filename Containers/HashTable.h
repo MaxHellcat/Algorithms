@@ -9,7 +9,10 @@
 #ifndef HashTable_h
 #define HashTable_h
 
-using namespace std; // For brief logging
+#include "iostream" // For logging
+#include "cassert"
+
+using namespace std; // For shorter logging
 
 // TODO:
 // a) Add remaining probing methods
@@ -401,6 +404,43 @@ void test_HashTable()
 	t.remove(element);
 
 	t.dump();
+
+
+	// TODO: Open addressing crashes with quadratic probing.
+//	HashTable t(new HashTable::OpenAddressing);
+//	
+//	const int kNumOfSlots = 17;
+//	
+//	Array<int> arr(kNumOfSlots);
+//	for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
+//	arr.permute();
+//	
+//	for (int i = 0; i < kNumOfSlots; i++)
+//	{
+//		const int key = random(1, 99);
+//		//		const int key = i;
+//		//		const int key = arr[i];
+//		
+//		auto element = new HashTable::Element(key);
+//		
+//		t.insert(element);
+//	}
+//	
+//	t.dump();
+//	
+//	const int key = 43;
+//	auto elem = t.search(key);
+//	
+//	t.remove(elem);
+//	t.dump();
+//	
+//	elem = t.search(39);
+//	t.remove(elem);
+//	t.dump();
+//	
+//	auto element = new HashTable::Element(9);
+//	t.insert(element);
+//	t.dump();
 }
 
 #endif /* HashTable_h */

@@ -13,5 +13,6 @@
 #include "SinglyLinkedList.h"
 #include "DoublyLinkedList.h"
 #include "HashTable.h"
+#include "BinarySearchTree.h"
 
 #endif /* Containers_h */
