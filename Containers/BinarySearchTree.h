@@ -18,7 +18,12 @@ using namespace std; // For shorter logging
 // a) We lack good visualisation of a tree
 // b) Reliable test for a randomly built tree
 // c) Both recursive/iterative versions for core dictionary methods
+// d) Method to check that it's actually a BST.
 
+// An implementation of a binary search tree.
+// Since there's no any guarrantee on whether a tree is balanced, all running times below
+// depend on tree height h, and not number of elements n. The height is O(lgn) for a balanced tree
+// and O(n) for unbalanced.
 class BinarySearchTree final
 {
 public:
@@ -40,22 +45,35 @@ public:
 // Core dictionary methods
 
 	// Time: O(h)
-	Element *search(Element *root, int aKey) const
+	Element *search(int aKey) const
+	{
+		auto elem = _root;
+
+		while (elem && elem->key != aKey)
+		{
+			elem = aKey < elem->key ? elem->left : elem->right;
+		}
+
+		return elem;
+	}
+
+	// Time: O(h)
+	Element *searchRecursive(Element *root, int aKey) const
 	{
 		assert(root);
-
+		
 		if (root == nullptr || aKey == root->key)
 		{
 			return root;
 		}
-
+		
 		if (aKey < root->key)
 		{
-			return search(root->left, aKey);
+			return searchRecursive(root->left, aKey);
 		}
 		else
 		{
-			return search(root->right, aKey);
+			return searchRecursive(root->right, aKey);
 		}
 	}
 
@@ -100,6 +118,43 @@ public:
 	}
 
 	// Time: O(h)
+	void insertRecursive(Element *root, Element *elem)
+	{
+		assert(root);
+		assert(elem);
+
+		if (elem->key < root->key)
+		{
+			if (root->left)
+			{
+				insertRecursive(root->left, elem);
+			}
+			else
+			{
+				root->left = elem;
+				elem->parent = root;
+			}
+		}
+		else
+		{
+			if (root->right)
+			{
+				insertRecursive(root->right, elem);
+			}
+			else
+			{
+				root->right = elem;
+				elem->parent = root;
+			}
+		}
+
+		if (root == _root)
+		{
+			_size++;
+		}
+	}
+
+	// Time: O(h)
 	void remove(Element *element)
 	{
 		assert(element);
@@ -134,29 +189,55 @@ public:
 	}
 
 	// Time: O(h)
-	Element *minimum(Element *element) const
+	Element *minimum(Element *root) const
 	{
-		assert(element);
+		assert(root);
 
-		if (element->left)
+		while (root->left)
 		{
-			return minimum(element->left);
+			root = root->left;
 		}
 
-		return element;
+		return root;
 	}
 
 	// Time: O(h)
-	Element *maximum(Element *element) const
+	Element *minimumRecursive(Element *root) const
 	{
-		assert(element);
+		assert(root);
 
-		if (element->right)
+		if (root->left)
 		{
-			return maximum(element->right);
+			return minimumRecursive(root->left);
 		}
 
-		return element;
+		return root;
+	}
+
+	// Time: O(h)
+	Element *maximum(Element *root) const
+	{
+		assert(root);
+
+		while (root->right)
+		{
+			root = root->right;
+		}
+
+		return root;
+	}
+
+	// Time: O(h)
+	Element *maximumRecursive(Element *root) const
+	{
+		assert(root);
+
+		if (root->right)
+		{
+			return maximumRecursive(root->right);
+		}
+
+		return root;
 	}
 
 	// Time: O(h)
@@ -278,66 +359,71 @@ void test_binarySearchTree()
 		tree.traverseInorder(tree.root());
 		cout << endl;
 
-		cout << "Min: " << tree.minimum(tree.root())->key << "\n";
-		cout << "Max: " << tree.maximum(tree.root())->key << "\n";
-		
+		cout << "Min (iterative): " << tree.minimum(tree.root())->key << "\n";
+		cout << "Min (recursive): " << tree.minimumRecursive(tree.root())->key << "\n";
+		cout << "Max (iterative): " << tree.maximum(tree.root())->key << "\n";
+		cout << "Max (recursive): " << tree.maximumRecursive(tree.root())->key << "\n";
+
 		{
 			const int kSuccessorKey = 15;
-			auto element = tree.search(tree.root(), kSuccessorKey);
+			auto element = tree.search(kSuccessorKey);
 			cout << "Successor of " << kSuccessorKey << ": " << tree.successor(element)->key << endl;
 		}
 
 		{
 			const int kSuccKeyRightNil = 13;
-			auto element = tree.search(tree.root(), kSuccKeyRightNil);
+			auto element = tree.search(kSuccKeyRightNil);
 			cout << "Successor of " << kSuccKeyRightNil << ": " << tree.successor(element)->key << endl;
 		}
 
 		{
 			const int kPredKey = 15;
-			auto element = tree.search(tree.root(), kPredKey);
+			auto element = tree.search(kPredKey);
 			cout << "Predecessor of " << kPredKey << ": " << tree.predecessor(element)->key << endl;
 		}
 
 		{
 			const int kPredKey = 9;
-			auto element = tree.search(tree.root(), kPredKey);
+			auto element = tree.search(kPredKey);
 			cout << "Predecessor of " << kPredKey << ": " << tree.predecessor(element)->key << endl;
 		}
 
 		{
 			const int kSearchedKey = 6;
-			auto element = tree.search(tree.root(), kSearchedKey);
-			cout << "Searching key " << kSearchedKey << ": " << element << endl;
+			auto element = tree.search(kSearchedKey);
+			cout << "Searching (iterative) key " << kSearchedKey << ": " << element << endl;
+
+			element = tree.searchRecursive(tree.root(), kSearchedKey);
+			cout << "Searching (recursive) key " << kSearchedKey << ": " << element << endl;
 		}
 
 		{
 			const int kRemovedKeyLeaf = 4;
-			cout << "Removing leaf: " << kRemovedKeyLeaf << endl;
-			auto element = tree.search(tree.root(), kRemovedKeyLeaf);
+			cout << "Removing (leaf) key " << kRemovedKeyLeaf << endl;
+			auto element = tree.search(kRemovedKeyLeaf);
 			tree.remove(element);
 		}
 
 		{
 			const int kRemovedKeyRightNil = 3;
-			cout << "Removing right nil: " << kRemovedKeyRightNil << endl;
-			auto element = tree.search(tree.root(), kRemovedKeyRightNil);
+			cout << "Removing (right nil) key " << kRemovedKeyRightNil << endl;
+			auto element = tree.search(kRemovedKeyRightNil);
 			tree.remove(element);
 		}
 
 		{
 			// This deletion must go before
 			const int kRemovedKeyLeftNilRightNotMin = 7;
-			cout << "Removing left nil, right not min: " << kRemovedKeyLeftNilRightNotMin << endl;
-			auto element = tree.search(tree.root(), kRemovedKeyLeftNilRightNotMin);
+			cout << "Removing (left nil, right not min) key " << kRemovedKeyLeftNilRightNotMin << endl;
+			auto element = tree.search(kRemovedKeyLeftNilRightNotMin);
 			tree.remove(element);
 		}
 
 		{
 			// this one
 			const int kRemovedKeyLeftNilRightMin = 9;
-			cout << "Removing left nil, right min: " << kRemovedKeyLeftNilRightMin << endl;
-			auto element = tree.search(tree.root(), kRemovedKeyLeftNilRightMin);
+			cout << "Removing (left nil, right min) " << kRemovedKeyLeftNilRightMin << endl;
+			auto element = tree.search(kRemovedKeyLeftNilRightMin);
 			tree.remove(element);
 		}
 
@@ -345,13 +431,22 @@ void test_binarySearchTree()
 		cout << endl;
 
 		{
-			const int kInsertedKey = 16	;
-			cout << "Inserting element with key " << kInsertedKey << endl;
+			const int kInsertedKey = 16;
+			cout << "Inserting key (iterative) " << kInsertedKey << endl;
 			tree.insert(new BinarySearchTree::Element(kInsertedKey));
+
+			tree.traverseInorder(tree.root());
+			cout << endl;
 		}
 
-		tree.traverseInorder(tree.root());
-		cout << endl;
+		{
+			const int kInsertedKey = 14;
+			cout << "Inserting key (recursive) " << kInsertedKey << endl;
+			tree.insertRecursive(tree.root(), new BinarySearchTree::Element(kInsertedKey));
+
+			tree.traverseInorder(tree.root());
+			cout << endl;
+		}
 	}
 }
 
