@@ -16,6 +16,8 @@ using namespace std; // For shorter logging
 
 // TODO:
 // a) We lack good visualisation of a tree
+// b) Reliable test for a randomly built tree
+// c) Both recursive/iterative versions for core dictionary methods
 
 class BinarySearchTree final
 {
@@ -28,13 +30,13 @@ public:
 		int key;
 	};
 
-	// TODO: Delete all elements
 	~BinarySearchTree()
 	{
 		deleteTree(_root);
 
 		cout << "Tree deleted, size: " << _size << endl;
 	}
+
 // Core dictionary methods
 
 	// Time: O(h)
@@ -157,9 +159,51 @@ public:
 		return element;
 	}
 
+	// Time: O(h)
+	Element *successor(Element *element) const
+	{
+		assert(element);
+
+		if (element->right)
+		{
+			return minimum(element->right);
+		}
+
+		auto y = element->parent;
+
+		while (y && element == y->right)
+		{
+			element = y;
+			y = y->parent;
+		}
+
+		return y;
+	}
+
+	// Time: O(h)
+	Element *predecessor(Element *elem) const
+	{
+		assert(elem);
+
+		if (elem->left)
+		{
+			return maximum(elem->left);
+		}
+
+		auto y = elem->parent;
+
+		while (y && elem == y->left)
+		{
+			elem = y;
+			y = y->parent;
+		}
+
+		return y;
+	}
+
 // Aux methods
 	// Time: Ø(n)
-	void traverseInorder(Element *root)
+	void traverseInorder(Element *root) const
 	{
 		if (root)
 		{
@@ -236,6 +280,30 @@ void test_binarySearchTree()
 
 		cout << "Min: " << tree.minimum(tree.root())->key << "\n";
 		cout << "Max: " << tree.maximum(tree.root())->key << "\n";
+		
+		{
+			const int kSuccessorKey = 15;
+			auto element = tree.search(tree.root(), kSuccessorKey);
+			cout << "Successor of " << kSuccessorKey << ": " << tree.successor(element)->key << endl;
+		}
+
+		{
+			const int kSuccKeyRightNil = 13;
+			auto element = tree.search(tree.root(), kSuccKeyRightNil);
+			cout << "Successor of " << kSuccKeyRightNil << ": " << tree.successor(element)->key << endl;
+		}
+
+		{
+			const int kPredKey = 15;
+			auto element = tree.search(tree.root(), kPredKey);
+			cout << "Predecessor of " << kPredKey << ": " << tree.predecessor(element)->key << endl;
+		}
+
+		{
+			const int kPredKey = 9;
+			auto element = tree.search(tree.root(), kPredKey);
+			cout << "Predecessor of " << kPredKey << ": " << tree.predecessor(element)->key << endl;
+		}
 
 		{
 			const int kSearchedKey = 6;
