@@ -17,8 +17,6 @@ using namespace std; // For shorter logging
 // TODO:
 // a) We lack good visualisation of a tree
 // b) Reliable test for a randomly built tree
-// c) Both recursive/iterative versions for core dictionary methods
-// d) Method to check that it's actually a BST.
 
 // An implementation of a binary search tree.
 // Since there's no any guarrantee on whether a tree is balanced, all running times below
@@ -241,20 +239,20 @@ public:
 	}
 
 	// Time: O(h)
-	Element *successor(Element *element) const
+	Element *successor(Element *elem) const
 	{
-		assert(element);
+		assert(elem);
 
-		if (element->right)
+		if (elem->right)
 		{
-			return minimum(element->right);
+			return minimum(elem->right);
 		}
 
-		auto y = element->parent;
+		auto y = elem->parent;
 
-		while (y && element == y->right)
+		while (y && elem == y->right)
 		{
-			element = y;
+			elem = y;
 			y = y->parent;
 		}
 
@@ -283,14 +281,16 @@ public:
 	}
 
 // Aux methods
+
 	// Time: Ø(n)
+	// TODO: Iterative version of this method.
 	void traverseInorder(Element *root) const
 	{
 		if (root)
 		{
 			traverseInorder(root->left);
 
-			std::cout << root->key << " ";
+			cout << root->key << " ";
 
 			traverseInorder(root->right);
 		}
@@ -299,6 +299,44 @@ public:
 		{
 			cout << "(size: " << _size << ")";
 		}
+	}
+
+	// Time: Ø(n)
+	void traverseInorderIterative(Element *root) const
+	{
+		Element *lastVisited = nullptr;
+
+		while (root)
+		{
+			if (lastVisited == root->right)
+			{
+				lastVisited = root;
+				root = root->parent;
+				continue;
+			}
+
+			if (lastVisited != root->left && root->left)
+			{
+				lastVisited = root;
+				root = root->left;
+				continue;
+			}
+
+			cout << root->key << " ";
+
+			if (root->right)
+			{
+				lastVisited = root;
+				root = root->right;
+				continue;
+			}
+
+			// Case when we printed a leaf
+			lastVisited = root;
+			root = root->parent;
+		}
+
+		cout << "(size: " << _size << ")";
 	}
 
 	Element *root() const { return _root; }
@@ -435,7 +473,7 @@ void test_binarySearchTree()
 			cout << "Inserting key (iterative) " << kInsertedKey << endl;
 			tree.insert(new BinarySearchTree::Element(kInsertedKey));
 
-			tree.traverseInorder(tree.root());
+			tree.traverseInorderIterative(tree.root());
 			cout << endl;
 		}
 
@@ -444,7 +482,7 @@ void test_binarySearchTree()
 			cout << "Inserting key (recursive) " << kInsertedKey << endl;
 			tree.insertRecursive(tree.root(), new BinarySearchTree::Element(kInsertedKey));
 
-			tree.traverseInorder(tree.root());
+			tree.traverseInorderIterative(tree.root());
 			cout << endl;
 		}
 	}
