@@ -11,11 +11,14 @@
 
 #include "Array.h"
 
+// TODO: Implement merge sort for linked list!
+
 void merge(Array<int> &arr, int leftIndex, int midIndex, int rightIndex);
 
 // Time: Ø(n*lgn) - worst/average/best
 // Space: Ø(n)
-// Stable: true
+// Stable: yes
+// Adaptive: no
 void mergeSort(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	if (leftIndex < rightIndex)

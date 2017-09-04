@@ -11,9 +11,10 @@
 
 #include "Array.h"
 
-// Time: Ø(n^2) - worst/average/best (tiny modification yields Ø(n) best-case running time)
+// Time: Ø(n^2) - worst/average/best (adaptive modification yields Ø(n) best-case running time)
 // Space: O(1)
 // Stable: true
+// Adaptive: no
 void bubbleSort(Array<int> &arr)
 {
 	for (size_t i = 0; i < arr.size() - 1; i++)

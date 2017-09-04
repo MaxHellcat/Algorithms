@@ -15,6 +15,7 @@
 // Time: Ø(n^2) - worst/average, Ø(n) - best
 // Space: Ø(1)
 // Stable: true
+// Adaptive: yes
 void insertionSort(Array<int> &arr)
 {
 	for (int i = 1; i < arr.size(); i++)

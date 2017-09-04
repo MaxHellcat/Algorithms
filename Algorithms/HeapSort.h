@@ -62,9 +62,10 @@ struct MaxHeap: public Array<int>
 	int heapSize = 0;
 };
 
-// Time: Ø(n*lgn) - worst/average, O(n*lgn) - best(?)
+// Time: O(n*lgn) - worst/average/best
 // Space: O(1)
 // Stable: false
+// Adaptive: no
 void heapSort(MaxHeap &heap)
 {
 	heap.build();

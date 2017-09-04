@@ -14,6 +14,7 @@
 // Time: Ø(n^2) - worst/average/best
 // Space: Ø(1)
 // Stable: ?
+// Adaptive: no
 void selectionSort(Array<int> &arr)
 {
 	for (int i = 0; i < arr.size() - 1; i++)
