@@ -14,7 +14,7 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	test_shellSort();
+	test_countingSort();
 
 
 	return 0;
