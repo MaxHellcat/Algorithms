@@ -29,6 +29,7 @@
 		AE0DAA491F2A9B4500EE5927 /* Containers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Containers.h; sourceTree = "<group>"; };
 		AE1EAA221F02856700F1720E /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
 		AE2D5E5E1F2F466300BC0CB1 /* BucketSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BucketSort.h; sourceTree = "<group>"; };
+		AE61DF9E1F5DADF3006F4723 /* ShellSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShellSort.h; sourceTree = "<group>"; };
 		AE731FA01F177E36007C4CB4 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
 		AE9D58821E8B241E009BC63C /* BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
@@ -92,6 +93,7 @@
 				AEF12C371E8A9B1E0078525D /* InsertionSort.h */,
 				AE9D58811E8B06BC009BC63C /* SelectionSort.h */,
 				AE9D58821E8B241E009BC63C /* BubbleSort.h */,
+				AE61DF9E1F5DADF3006F4723 /* ShellSort.h */,
 				AEBD495E1E8E947A0041BC3B /* MergeSort.h */,
 				AEBD49601E8ED32F0041BC3B /* HeapSort.h */,
 				AED96DFE1E97B60D0074202A /* QuickSort.h */,

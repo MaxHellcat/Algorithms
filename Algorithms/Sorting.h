@@ -12,6 +12,7 @@
 #include "InsertionSort.h"
 #include "SelectionSort.h"
 #include "BubbleSort.h"
+#include "ShellSort.h"
 #include "MergeSort.h"
 #include "HeapSort.h"
 #include "QuickSort.h"
