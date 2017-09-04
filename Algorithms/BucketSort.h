@@ -71,6 +71,8 @@ void bucketSort(Array<float> &arr)
 
 void test_bucketSort()
 {
+	initTestEnvironment();
+
 	Array<float> arr(10);
 
 	for (int i=0; i<arr.size(); i++)

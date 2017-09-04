@@ -6,19 +6,16 @@
 //  Copyright © 2017 Max Reshetey. All rights reserved.
 //
 
-//#include "iostream" // For time()
-
 #include "Sorting.h"
 #include "Containers.h"
 
+#include "iostream"
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
-// TODO: Find a decent place for this
-	srand( (unsigned)time(nullptr) );
-
 	test_shellSort();
+
 
 	return 0;
 }

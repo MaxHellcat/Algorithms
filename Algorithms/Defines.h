@@ -9,7 +9,12 @@
 #ifndef Defines_h
 #define Defines_h
 
-#include "iostream" // For rand()
+#include "iostream" // For rand(), time()
+
+void initTestEnvironment()
+{
+	srand( (unsigned)time(nullptr) );
+}
 
 int random(int min, int max)
 {

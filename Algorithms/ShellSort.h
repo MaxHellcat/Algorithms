@@ -36,6 +36,8 @@ void shellSort(Array<int> &arr)
 
 void test_shellSort()
 {
+	initTestEnvironment();
+
 	bool allPassed = true;
 
 	for (int i = 2; i < 10; i++)

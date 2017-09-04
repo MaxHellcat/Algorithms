@@ -85,6 +85,7 @@ void test_countingSort()
 	}
 
 	{
+		// TODO: Array contains zeroes, is it not?
 		Array<int> arr(25);
 		arr.permute();
 

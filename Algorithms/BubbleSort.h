@@ -30,6 +30,8 @@ void bubbleSort(Array<int> &arr)
 
 void test_bubbleSort()
 {
+	initTestEnvironment();
+
 	for (int i = 2; i < 10; i++)
 	{
 		Array<int> arr(i);

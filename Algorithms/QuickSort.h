@@ -98,6 +98,8 @@ int hoarePartition(Array<int> &arr, int leftIndex, int rightIndex)
 
 void test_quickSort()
 {
+	initTestEnvironment();
+
 	for (int i = 2; i < 10; i++)
 	{
 		Array<int> arr(i);

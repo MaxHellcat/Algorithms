@@ -90,6 +90,8 @@ void merge(Array<int> &arr, int leftIndex, int midIndex, int rightIndex)
 
 void test_mergeSort()
 {
+	initTestEnvironment();
+
 	for (int i = 2; i < 10; i++)
 	{
 		Array<int> arr(i);

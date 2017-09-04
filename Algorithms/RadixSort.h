@@ -33,6 +33,8 @@ void radixSort(Array<int> &arr, int d)
 
 void test_radixSort()
 {
+	initTestEnvironment();
+
 //	Array<int> arr = {329, 457, 657, 839, 436, 720, 355};
 	Array<int> arr(25);
 	for (auto &val : arr)

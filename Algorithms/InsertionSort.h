@@ -85,6 +85,8 @@ void test_insertionSortOnDLL()
 
 void test_insertionSort()
 {
+	initTestEnvironment();
+
 	for (int i = 2; i < 10; i++)
 	{
 		Array<int> arr(i);

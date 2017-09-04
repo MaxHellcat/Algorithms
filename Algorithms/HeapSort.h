@@ -81,6 +81,8 @@ void heapSort(MaxHeap &heap)
 
 void test_heapSort()
 {
+	initTestEnvironment();
+
 	for (int i = 2; i < 10; i++)
 	{
 		MaxHeap arr(i);
