@@ -11,30 +11,19 @@
 
 #include "Array.h"
 
-// Time: Ø(n^2) - worst/average/best (Note, best can be Ø(n) with slight modification)
-// Space: Ø(1)
+// Time: Ø(n^2) - worst/average/best (tiny modification yields Ø(n) best-case running time)
+// Space: O(1)
+// Stable: true
 void bubbleSort(Array<int> &arr)
 {
-	for (int i = 0; i < arr.size() - 1; i++)
+	for (size_t i = 0; i < arr.size() - 1; i++)
 	{
-		for (int j = (int)arr.size() - 1; j > i; j--)
+		for (size_t j = 1; j < arr.size() - i; j++)
 		{
 			if (arr[j] < arr[j - 1])
 			{
-				const int tmpVal = arr[j];
-				arr[j] = arr[j - 1];
-				arr[j - 1] = tmpVal;
+				swap(arr[j], arr[j - 1]);
 			}
-
-			// TODO: Explain why this also works
-
-			// First I wrote this way and it also works!
-//			if (arr[j] < arr[i])
-//			{
-//				const int tmpVal = arr[i];
-//				arr[i] = arr[j];
-//				arr[j] = tmpVal;
-//			}
 		}
 	}
 }

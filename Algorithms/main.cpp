@@ -8,7 +8,7 @@
 
 //#include "iostream" // For time()
 
-//#include "Sorting.h"
+#include "Sorting.h"
 #include "Containers.h"
 
 using namespace std;
@@ -16,10 +16,9 @@ using namespace std;
 int main(int argc, const char * argv[])
 {
 // TODO: Find a decent place for this
-//	srand( (unsigned)time(nullptr) );
+	srand( (unsigned)time(nullptr) );
 
-	test_binarySearchTree();
-
+	test_bubbleSort();
 
 	return 0;
 }
