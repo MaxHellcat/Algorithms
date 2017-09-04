@@ -18,7 +18,7 @@ int main(int argc, const char * argv[])
 // TODO: Find a decent place for this
 	srand( (unsigned)time(nullptr) );
 
-	test_bubbleSort();
+	test_shellSort();
 
 	return 0;
 }
