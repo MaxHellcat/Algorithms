@@ -24,14 +24,14 @@ void quickSort(Array<int> &arr, int leftIndex, int rightIndex)
 	if (leftIndex < rightIndex)
 	{
 //		const int q = partition(arr, leftIndex, rightIndex);
-//		const int q = randomPartition(arr, leftIndex, rightIndex);
+		const int q = randomPartition(arr, leftIndex, rightIndex);
 
-//		quickSort(arr, leftIndex, q - 1);
-//		quickSort(arr, q + 1, rightIndex);
-
-		const int q = hoarePartition(arr, leftIndex, rightIndex);
-		quickSort(arr, leftIndex, q);
+		quickSort(arr, leftIndex, q - 1);
 		quickSort(arr, q + 1, rightIndex);
+
+//		const int q = hoarePartition(arr, leftIndex, rightIndex);
+//		quickSort(arr, leftIndex, q);
+//		quickSort(arr, q + 1, rightIndex);
 	}
 }
 
@@ -65,6 +65,7 @@ int randomPartition(Array<int> &arr, int leftIndex, int rightIndex)
 	return partition(arr, leftIndex, rightIndex);
 }
 
+// TODO: Work out how this partition works.
 int hoarePartition(Array<int> &arr, int leftIndex, int rightIndex)
 {
 	const int x = arr[leftIndex];
