@@ -26,16 +26,13 @@ public:
 public:
 	~SinglyLinkedList()
 	{
-		while (head())
-		{
-			remove(head());
-		}
+		removeAll();
 	}
 
 // Core dictionary methods
 	Node *search(int aKey) const
 	{
-		auto node = head();
+		auto node = _head;
 
 		while (node && node->key != aKey)
 		{
@@ -49,9 +46,7 @@ public:
 	void insert(Node *aNode, Node *atNode)
 	{
 		assert(aNode);
-		assert(aNode->next == nullptr);
 
-		// TODO: This unrolled if-else chain isn't ideal
 		if (_head == nullptr)
 		{
 			assert(atNode == nullptr);
@@ -68,12 +63,7 @@ public:
 			auto prevNode = previous(atNode);
 			assert(prevNode);
 
-			// Only update node's next if we're adding in the middle of a list.
-			if (atNode)
-			{
-				aNode->next = atNode;
-			}
-
+			aNode->next = atNode;
 			prevNode->next = aNode;
 		}
 	}
@@ -98,18 +88,26 @@ public:
 	}
 
 // Extra methods
-	Node *head() const { return _head; }
-	bool empty() const { return _head == nullptr; }
+//	const Node *head() const { return _head; }
+//	bool empty() const { return _head == nullptr; } // Uncommment when needed
 
-	void pushFront(Node *aNode) { insert(aNode, head()); }
+	void pushFront(Node *aNode) { insert(aNode, _head); }
 	void pushBack(Node *aNode) { insert(aNode, nullptr); }
+
+	void removeAll()
+	{
+		while (_head)
+		{
+			remove(_head);
+		}
+	}
 
 	// TODO: Must go away after iterator is introduced.
 	std::string description() const
 	{
 		std::string desc = "(";
 
-		auto * node = head();
+		auto *node = _head;
 
 		while (node)
 		{
@@ -126,9 +124,9 @@ public:
 
 private:
 	// Returns tail, if ofNode is nil
-	Node *previous(Node *ofNode) const
+	Node *previous(const Node *ofNode) const
 	{
-		auto node = head();
+		auto node = _head;
 
 		while (node && node->next != ofNode)
 		{
@@ -165,10 +163,7 @@ void test_SinglyLinkedList()
 	list.remove(node);
 	std::cout << list.description() << std::endl << std::endl;
 
-	for (int i = 0; i < kNumberOfElements * 2; i++)
-	{
-		list.remove(list.head());
-	}
+	list.removeAll();
 	std::cout << list.description() << std::endl << std::endl;
 };
 

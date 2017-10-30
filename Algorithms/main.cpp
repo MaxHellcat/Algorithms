@@ -14,8 +14,9 @@ using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	test_quickSort();
+//	test_quickSort();
 
+	test_SinglyLinkedList();
 
 	return 0;
 }
