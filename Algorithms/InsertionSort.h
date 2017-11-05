@@ -13,7 +13,7 @@
 #include "DoublyLinkedList.h"
 
 // Time: Ø(n^2) - worst/average, Ø(n) - best
-// Space: Ø(1)
+// Space: O(1)
 // Stable: true
 // Adaptive: yes
 void insertionSort(Array<int> &arr)
@@ -37,7 +37,11 @@ void insertionSort(Array<int> &arr)
 	}
 }
 
-// TODO: Add description
+// Notes:
+// a. This implementation simply duplicates the one above for sorting arrays.
+// b. We don't swap nodes itself here, only keys - is it an issue?
+// Time: Ø(n^2) - worst/average, Ø(n) - best
+// Space: O(1)
 template<typename T>
 void insertionSort(DoublyLinkedList<T> &list)
 {

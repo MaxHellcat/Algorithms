@@ -122,7 +122,7 @@ public:
 // Extra methods
 // TODO: All duplicate the ones in SinglyLinkedList
 	Node *head() const { return _head; }
-	bool empty() const { return _head == nullptr; }
+//	bool empty() const { return _head == nullptr; }
 
 	void pushFront(Node *aNode) { insert(aNode, head()); }
 	void pushBack(Node *aNode) { insert(aNode, nullptr); }
