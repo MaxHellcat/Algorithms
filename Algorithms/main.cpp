@@ -8,13 +8,18 @@
 
 #include "Sorting.h"
 #include "Containers.h"
+#include "MaxSubarray.h"
 
 #include "iostream"
 using namespace std;
 
 int main(int argc, const char * argv[])
 {
-	test_insertionSort();
+//	test_insertionSort();
+	
+	MaxSubarray::test();
+	
+	
 
 	return 0;
 }
