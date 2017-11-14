@@ -10,5 +10,13 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "mergeSort_DLL(DoublyLinkedList&lt;int&gt;&amp;, DoublyLinkedList&lt;int&gt;::Node*, DoublyLinkedList&lt;int&gt;::Node*):MergeSort.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "midNode">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
