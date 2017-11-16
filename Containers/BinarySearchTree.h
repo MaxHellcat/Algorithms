@@ -283,7 +283,6 @@ public:
 // Aux methods
 
 	// Time: Ø(n)
-	// TODO: Iterative version of this method.
 	void traverseInorder(Element *root) const
 	{
 		if (root)
@@ -379,7 +378,6 @@ private:
 
 private:
 	Element *_root = nullptr;
-
 	size_t _size = 0;
 };
 

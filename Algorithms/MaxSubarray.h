@@ -52,7 +52,7 @@ namespace MaxSubarray
 
 		const auto maxSum = maxSubarray(arr);
 
-		cout << "Max subarray: " << maxSum << endl;
+        std::cout << "Max subarray: " << maxSum << std::endl;
 	}
 }
 

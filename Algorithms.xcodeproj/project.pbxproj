@@ -31,6 +31,7 @@
 		AE2D5E5E1F2F466300BC0CB1 /* BucketSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BucketSort.h; sourceTree = "<group>"; };
 		AE61DF9E1F5DADF3006F4723 /* ShellSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShellSort.h; sourceTree = "<group>"; };
 		AE7263FA1FBB0A8D007F55C0 /* MaxSubarray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxSubarray.h; sourceTree = "<group>"; };
+		AE7264011FBE3E59007F55C0 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
 		AE731FA01F177E36007C4CB4 /* RadixSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixSort.h; sourceTree = "<group>"; };
 		AE9D58811E8B06BC009BC63C /* SelectionSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectionSort.h; sourceTree = "<group>"; };
 		AE9D58821E8B241E009BC63C /* BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BubbleSort.h; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 				AE0DAA481F2A9AE600EE5927 /* DoublyLinkedList.h */,
 				AEEA9CAD1F3DE4CB005C3ED8 /* HashTable.h */,
 				AEAEB6DF1F559C0D009FAD11 /* BinarySearchTree.h */,
+				AE7264011FBE3E59007F55C0 /* Stack.h */,
 			);
 			path = Containers;
 			sourceTree = "<group>";

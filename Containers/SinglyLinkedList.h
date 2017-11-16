@@ -60,7 +60,7 @@ public:
 		}
 		else
 		{
-			auto prevNode = previous(atNode);
+			auto prevNode = prev(atNode);
 			assert(prevNode);
 
 			aNode->next = atNode;
@@ -78,7 +78,7 @@ public:
 		}
 		else
 		{
-			auto prevNode = previous(aNode);
+			auto prevNode = prev(aNode);
 			assert(prevNode);
 
 			prevNode->next = aNode->next;
@@ -107,14 +107,9 @@ public:
 	{
 		std::string desc = "(";
 
-		auto *node = _head;
-
-		while (node)
+		for (auto *node = _head; node; node = node->next)
 		{
-			desc += std::to_string(node->key);
-			desc += (node->next ? ", " : "");
-
-			node = node->next;
+			desc += std::to_string(node->key) + (node->next ? ", " : "");
 		}
 
 		desc += ")";
@@ -124,7 +119,7 @@ public:
 
 private:
 	// Returns tail, if ofNode is nil
-	Node *previous(const Node *ofNode) const
+	Node *prev(const Node *ofNode) const
 	{
 		auto node = _head;
 

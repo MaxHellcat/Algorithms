@@ -28,10 +28,9 @@ public:
 
 	Array(std::initializer_list<T> list) : _pointer(new T[list.size()]), _size(list.size())
 	{
-		int i = 0;
-		for (auto val : list)
+		for (int i = 0; i < list.size(); i++)
 		{
-			_pointer[i++] = val;
+			_pointer[i] = *(list.begin() + i);
 		}
 	}
 

@@ -10,16 +10,12 @@
 #include "Containers.h"
 #include "MaxSubarray.h"
 
-#include "iostream"
-using namespace std;
+//#include "iostream"
+//using namespace std;
 
 int main(int argc, const char * argv[])
 {
-//	test_insertionSort();
-	
-	MaxSubarray::test();
-	
-	
+//    test_Stack();
 
 	return 0;
 }

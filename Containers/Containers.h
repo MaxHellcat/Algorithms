@@ -14,5 +14,6 @@
 #include "DoublyLinkedList.h"
 #include "HashTable.h"
 #include "BinarySearchTree.h"
+#include "Stack.h"
 
 #endif /* Containers_h */
