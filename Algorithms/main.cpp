@@ -16,11 +16,9 @@
 
 int main(int argc, const char * argv[])
 {
-//    test_Stack();
-	
-	test_Heap();
-	
-//	test_heapSort();
+//	test_Heap();
+
+	test_heapSort();
 
 	return 0;
 }

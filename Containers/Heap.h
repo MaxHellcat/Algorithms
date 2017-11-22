@@ -11,19 +11,32 @@
 
 #include "vector"
 
+#include "Array.h"
+#include "Defines.h"
+
 // A max heap implementation using dynamic array
 class MaxHeap
 {
 public:
-	// Core dictionary methods
+	MaxHeap() {}
 
+	MaxHeap(Array<int> &arr) // Heap sort related
+	{
+		_heapSize = arr.size();
+		_vec.resize(_heapSize);
+
+		for (int i = 0; i < _heapSize; i++) { _vec[i] = arr[i]; }
+	}
+
+// Core dictionary methods
 	// Time O(lgn)
 	void insert(int key)
 	{
 		_vec.push_back(key);
+		_heapSize += 1;
 
 		// Bubble-up if needed
-		auto i = static_cast<int>(_vec.size()-1);
+		auto i = static_cast<int>(_heapSize-1);
 
 		while (parent(i) >= 0 && _vec[parent(i)] < key)
 		{
@@ -35,7 +48,7 @@ public:
 	// Time O(1)
 	int max() const
 	{
-		assert(_vec.size() >= 1);
+		assert(_heapSize >= 1);
 
 		return _vec[0];
 	}
@@ -50,22 +63,18 @@ public:
 		_vec[0] = _vec[_vec.size()-1];
 
 		_vec.resize(_vec.size()-1);
+		_heapSize -= 1;
 
 		heapify(0);
 
 		return maxVal;
 	}
 
-// Aux methods
-	// Time O(n)
-	void build()
-	{
-		for (auto i=(int)_vec.size()/2-1; i >= 0; i--)
-		{
-			heapify(i);
-		}
-	}
+	int left(int index) const { return 2*index + 1; }
+	int right(int index) const { return 2*index + 2; }
+	int parent(int index) const { return (index-1) / 2; }
 
+// Aux methods
 	// Time O(lgn)
 	void heapify(int index)
 	{
@@ -74,12 +83,12 @@ public:
 
 		int maxIndex = index;
 
-		if (leftIndex < _vec.size() && _vec[leftIndex] > _vec[maxIndex]) {
+		if (leftIndex < _heapSize && _vec[leftIndex] > _vec[maxIndex]) {
 			maxIndex = leftIndex;
 		}
 
 		// Note, if leftIndex >= _vec.size(), so is rightIndex
-		if (rightIndex < _vec.size() && _vec[rightIndex] > _vec[maxIndex]) {
+		if (rightIndex < _heapSize && _vec[rightIndex] > _vec[maxIndex]) {
 			maxIndex = rightIndex;
 		}
 
@@ -90,16 +99,6 @@ public:
 			heapify(maxIndex);
 		}
 	}
-
-	int left(int index) const { return 2*index + 1; }
-	int right(int index) const { return 2*index + 2; }
-	int parent(int index) const { return (index-1) / 2; }
-
-	size_t size() const { return _vec.size(); }
-	void setSize(size_t size) { _vec.resize(size); }
-
-	// TODO: Does heap provide this? Added only for heap sort.
-	int &operator[](size_t index) { assert(index < size()); return _vec[index]; }
 
 	std::string description() const
 	{
@@ -117,30 +116,46 @@ public:
 
 	bool isHeap() const
 	{
-		for (int i=(int)size()/2-1; i >= 0; i--)
+		for (int i=(int)_heapSize/2-1; i >= 0; i--)
 		{
 			if (_vec[left(i)] > _vec[i] || _vec[right(i)] > _vec[i])
 			{
 				return false;
 			}
 		}
-		
+
 		return true;
 	}
 
+	// Time O(n)
+	void build() // Heap sort related
+	{
+		for (auto i=(int)_vec.size()/2-1; i >= 0; i--)
+		{
+			heapify(i);
+		}
+	}
+
+	size_t heapSize() const { return _heapSize; } // Heap sort related
+	void decrementHeapSize() { _heapSize -= 1; } // Heap sort related
+	void swapFirstWithLast() { swap(_vec[0], _vec[_heapSize-1]); } // Heap sort related
+
 private:
 	std::vector<int> _vec;
+
+	size_t _heapSize = 0; // Heap sort uses this to be in-place, and we have to maintain
 };
 
 void test_Heap()
 {
-	MaxHeap heap;
+	initTestEnvironment();
 
-	heap.insert(3);
-	heap.insert(1);
-	heap.insert(2);
-	heap.insert(5);
-	heap.insert(4);
+	Array<int> arr(7);
+	for (int i = 0; i < arr.size(); i++) { arr[i] = i + 1; }
+	arr.permute();
+
+	MaxHeap heap;
+	for (const auto &val : arr) { heap.insert(val); }
 
 	std::cout << "Heap: " << heap.description() << std::endl;
 	std::cout << "Is heap: " << heap.isHeap() << std::endl;
@@ -149,9 +164,9 @@ void test_Heap()
 
 	std::cout << "Max: " << heap.max() << std::endl;
 	std::cout << "Extract max: " << heap.extractMax() << std::endl;
-	
+
 	std::cout << std::endl;
-	
+
 	std::cout << "Heap: " << heap.description() << std::endl;
 	std::cout << "Is heap: " << heap.isHeap() << std::endl;
 	
