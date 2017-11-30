@@ -19,8 +19,8 @@ using namespace std; // For shorter logging
 // b) Reliable test for a randomly built tree
 
 // An implementation of a binary search tree.
-// Since there's no any guarrantee on whether a tree is balanced, all running times below
-// depend on tree height h, and not number of elements n. The height is O(lgn) for a balanced tree
+// Since there's no any guarantee on whether a tree is balanced, all running times below
+// depend on tree height h, and not the number of elements n. The height is O(lgn) for a balanced tree
 // and O(n) for unbalanced.
 class BinarySearchTree final
 {

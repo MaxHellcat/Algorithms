@@ -29,6 +29,7 @@
 		AE0DAA491F2A9B4500EE5927 /* Containers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Containers.h; sourceTree = "<group>"; };
 		AE1EAA221F02856700F1720E /* CountingSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountingSort.h; sourceTree = "<group>"; };
 		AE2D5E5E1F2F466300BC0CB1 /* BucketSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BucketSort.h; sourceTree = "<group>"; };
+		AE42E3961FD03025008CC8FC /* Graph.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graph.h; sourceTree = "<group>"; };
 		AE61DF9E1F5DADF3006F4723 /* ShellSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShellSort.h; sourceTree = "<group>"; };
 		AE7263FA1FBB0A8D007F55C0 /* MaxSubarray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaxSubarray.h; sourceTree = "<group>"; };
 		AE7264011FBE3E59007F55C0 /* Stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stack.h; sourceTree = "<group>"; };
@@ -70,6 +71,7 @@
 				AEAEB6DF1F559C0D009FAD11 /* BinarySearchTree.h */,
 				AE7264011FBE3E59007F55C0 /* Stack.h */,
 				AED9711F1FC584EA0072E374 /* Heap.h */,
+				AE42E3961FD03025008CC8FC /* Graph.h */,
 			);
 			path = Containers;
 			sourceTree = "<group>";

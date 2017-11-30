@@ -16,9 +16,7 @@
 
 int main(int argc, const char * argv[])
 {
-//	test_Heap();
-
-	test_heapSort();
+	test_Graph();
 
 	return 0;
 }
